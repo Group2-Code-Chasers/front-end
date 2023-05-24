@@ -1,4 +1,4 @@
-import "./footer.css"
+import "./Footer.css"
 import React from 'react';
 import {
   MDBFooter,
@@ -7,7 +7,7 @@ import {
 from 'mdb-react-ui-kit';
 function Footer(){
     return(
-        <div class="footer">
+        <div className="footer">
         <MDBFooter className='bg-dark text-center text-white'>
         <MDBContainer className='p-4 pb-0'>
          
