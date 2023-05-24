@@ -10,7 +10,7 @@ function Home()
 
     
     const getallCategory = ()=>{
-        const serverURL=`http://localhost:3003/getAllCategories`;
+        const serverURL=`http://localhost:3000/getAllCategories`;
 
         axios.get(serverURL)
         .then(response=>{
@@ -32,12 +32,17 @@ function Home()
         <p>The best place to practice</p>
         {CategoryData.map(item => {
                 return (
-                    <Card style={{ width: '18rem' }} key={item.ID}>
+                    <Card style={{ width: '22rem' , background: 'black', color:'white', margin:'5%', padding:'5%'}} key={item.id}>
                         <Card.Img variant="top" src={item.image} />
                         <Card.Body>
-                            <Card.Title>{item.name}</Card.Title>
+                            <Card.Title>{item.question}</Card.Title>
                             <Card.Text>
-                               <p>{item.bottomText}</p>
+                                <ul>
+                                    <li>{item.answers.answer_a}</li>
+                                    <li>{item.answers.answer_b}</li>
+                                    
+                                </ul>
+                               
                             </Card.Text>
                             <Button variant="primary">Take a quiz</Button>
                         </Card.Body>
