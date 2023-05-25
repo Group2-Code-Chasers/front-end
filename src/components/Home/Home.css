@@ -1,3 +1,5 @@
+/*cards styling*/
+
 .cardBox {
     width: 150px;
     height: 180px;
@@ -41,6 +43,11 @@
     opacity: .8;
   }
   
+  .cardBox:hover {
+    box-shadow: rgba(0, 0, 0, 0.8) 0px 4px 20px 0px,
+      rgba(0, 0, 0, 0.9) 0px 4px 30px 0px;
+    transform: scale(1.05) ;
+  }
 
   .cardBox::before {
     content: "";
@@ -65,16 +72,26 @@
     }
   }
   
+
+  /*all cards Container*/
+  .mainContainer{
+    background-color: #17171a;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+
+  }
 .Container {
     padding: 5%;
     margin-bottom: 4%;
+    
 }
 
 
 
 /*hero*/
 .hero {
-    background-image: linear-gradient(to right, #ff00cc, #333399);
+    background-image: linear-gradient(to right, #1a1a1b, #ff00cc, #333399, #1a1a1b);
     color: #ffffff;
     text-align: center;
     padding: 100px 0;
@@ -142,3 +159,15 @@
         margin: auto 100px;
     }
 }
+
+
+.up{
+    background-image: linear-gradient( #ff00cc, #333399, #17171a);
+    height: 20px;
+}
+
+
+.down{
+    background-image: linear-gradient( #ff00cc, #333399, #17171a);
+    height: 20px;
+  }
