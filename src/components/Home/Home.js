@@ -32,7 +32,7 @@ function Home() {
 
     return (
         <>
-          
+
             <Container fluid className="hero">
                 <Container>
                     <h1 className="hero-title">Get Ready to Quiztify!</h1>
@@ -41,20 +41,29 @@ function Home() {
                 </Container>
             </Container>
 
-            <Container className='Container'>
-                <Row xs={1} sm={2} md={3} lg={4} xl={5} className="g-4">
-                    {CategoryData.map(item => (
-                        <Col key={item.id}>
-                            <div class="cardBox">
-                                <div class="card">
-                                    <span class="text">{item.name}</span>
 
+
+            <div className='mainContainer'>
+           
+                <Container className='Container'>
+                    <Row xs={1} sm={2} md={3} lg={4} xl={5} className="g-4">
+                        {CategoryData.map(item => (
+                            <Col key={item.id}>
+                                <div class="cardBox">
+                                    <div class="card">
+                                        <span class="text">{item.name}</span>
+
+                                    </div>
                                 </div>
-                            </div>
-                        </Col>
-                    ))}
-                </Row>
-            </Container>
+                            </Col>
+                        ))}
+                    </Row>
+                    
+                </Container>
+                <div className='down'></div>
+            </div>
+           
+
         </>
     )
 }
