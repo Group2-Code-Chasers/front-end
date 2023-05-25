@@ -2,53 +2,59 @@ import Button from 'react-bootstrap/Button';
 import axios from 'axios';
 import { useEffect, useState } from 'react'
 import Card from 'react-bootstrap/Card';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
+import Container from 'react-bootstrap/Container';
 
-function Home()
-{
+import 'bootstrap/dist/css/bootstrap.css';
+import "./Home.css"
+function Home() {
 
     const [CategoryData, setCategoryData] = useState([])
 
-    
-    const getallCategory = ()=>{
-        const serverURL=`http://localhost:3000/getAllCategories`;
+
+    const getallCategory = () => {
+        const serverURL = `http://localhost:3000/getAllCategories`;
 
         axios.get(serverURL)
-        .then(response=>{
-            console.log(response.data)
-            setCategoryData(response.data)
-        })
-        .catch((error)=>{
-                 console.log(error)
-             })
+            .then(response => {
+                console.log(response.data)
+                setCategoryData(response.data)
+            })
+            .catch((error) => {
+                console.log(error)
+            })
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         getallCategory()
-    },[])
+    }, [])
 
-    return(
+    return (
         <>
-        <h1>Welcome To Quizzers Website</h1>
-        <p>The best place to practice</p>
-        {CategoryData.map(item => {
-                return (
-                    <Card style={{ width: '22rem' , background: 'black', color:'white', margin:'5%', padding:'5%'}} key={item.id}>
-                        <Card.Img variant="top" src={item.image} />
-                        <Card.Body>
-                            <Card.Title>{item.question}</Card.Title>
-                            <Card.Text>
-                                <ul>
-                                    <li>{item.answers.answer_a}</li>
-                                    <li>{item.answers.answer_b}</li>
-                                    
-                                </ul>
-                               
-                            </Card.Text>
-                            <Button variant="primary">Take a quiz</Button>
-                        </Card.Body>
-                    </Card>
-                )
-            })}
+          
+            <Container fluid className="hero">
+                <Container>
+                    <h1 className="hero-title">Get Ready to Quiztify!</h1>
+                    <h2 className="hero-subtitle">Unleash Your Inner Quizzer</h2>
+                    <p className="hero-description">Prepare for mind-boggling questions and laugh-out-loud moments!</p>
+                </Container>
+            </Container>
+
+            <Container className='Container'>
+                <Row xs={1} sm={2} md={3} lg={4} xl={5} className="g-4">
+                    {CategoryData.map(item => (
+                        <Col key={item.id}>
+                            <div class="cardBox">
+                                <div class="card">
+                                    <span class="text">{item.name}</span>
+
+                                </div>
+                            </div>
+                        </Col>
+                    ))}
+                </Row>
+            </Container>
         </>
     )
 }
