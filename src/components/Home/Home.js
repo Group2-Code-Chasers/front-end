@@ -1,56 +1,109 @@
-import Button from 'react-bootstrap/Button';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useEffect, useState } from 'react'
-import Card from 'react-bootstrap/Card';
+import { Container, Row, Col } from 'react-bootstrap';
+import CategoryModal from '../Modal/CategoryModal';
 
-function Home()
-{
+import 'bootstrap/dist/css/bootstrap.css';
+import './Home.css';
 
-    const [CategoryData, setCategoryData] = useState([])
+function Home() {
+  const [categoryData, setCategoryData] = useState([]);
+  const [selectedCategoryId, setSelectedCategoryId] = useState(null);
+  const [name, setName] = useState('');
+  const [numQuestions, setNumQuestions] = useState(5);
+  const [difficulty, setDifficulty] = useState('easy');
+  const [showModal, setShowModal] = useState(false);
 
-    
-    const getallCategory = ()=>{
-        const serverURL=`http://localhost:3000/getAllCategories`;
 
-        axios.get(serverURL)
-        .then(response=>{
-            console.log(response.data)
-            setCategoryData(response.data)
-        })
-        .catch((error)=>{
-                 console.log(error)
-             })
-    }
 
-    useEffect(()=>{
-        getallCategory()
-    },[])
 
-    return(
-        <>
-        <h1>Welcome To Quizzers Website</h1>
-        <p>The best place to practice</p>
-        {CategoryData.map(item => {
-                return (
-                    <Card style={{ width: '22rem' , background: 'black', color:'white', margin:'5%', padding:'5%'}} key={item.id}>
-                        <Card.Img variant="top" src={item.image} />
-                        <Card.Body>
-                            <Card.Title>{item.question}</Card.Title>
-                            <Card.Text>
-                                <ul>
-                                    <li>{item.answers.answer_a}</li>
-                                    <li>{item.answers.answer_b}</li>
-                                    
-                                </ul>
-                               
-                            </Card.Text>
-                            <Button variant="primary">Take a quiz</Button>
-                        </Card.Body>
-                    </Card>
-                )
-            })}
-        </>
-    )
+  const chooseQuiz = (categoryId, numQuestions, difficulty) => {
+    const serverURL = `http://localhost:3000/choosequiz?categoryId=${categoryId}&amount=${numQuestions}&difficulty=${difficulty}`;
+  
+    axios
+      .get(serverURL)
+      .then(response => {
+        console.log(response.data);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  };
+
+
+
+
+
+
+  const handleSubmit = event => {
+    event.preventDefault();
+    chooseQuiz(selectedCategoryId, numQuestions, difficulty);
+  };
+
+
+  const getallCategory = () => {
+    const serverURL = `http://localhost:3000/getAllCategories`;
+
+    axios
+      .get(serverURL)
+      .then(response => {
+        console.log(response.data);
+        setCategoryData(response.data);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  };
+
+  const handleCardClick = categoryId => {
+    setSelectedCategoryId(categoryId);
+    setName('');
+    setNumQuestions('');
+    setDifficulty('easy');
+    setShowModal(true);
+  };
+
+  useEffect(() => {
+    getallCategory();
+  }, []);
+
+  return (
+    <>
+      <Container fluid className="hero">
+        <Container>
+          <h1 className="hero-title">Get Ready to Quiztify!</h1>
+          <h2 className="hero-subtitle">Unleash Your Inner Quizzer</h2>
+          <p className="hero-description">
+            Prepare for mind-boggling questions and laugh-out-loud moments!
+          </p>
+        </Container>
+      </Container>
+
+      <div className="mainContainer">
+        <Container className="Container">
+          <Row xs={1} sm={2} md={3} lg={4} xl={5} className="g-4">
+            {categoryData.map(item => (
+              <Col key={item.id}>
+                <div className="cardBox">
+                  <div className="card" onClick={() => handleCardClick(item.id)}>
+                    <span className="text">{item.name}</span>
+                  </div>
+                </div>
+              </Col>
+            ))}
+          </Row>
+        </Container>
+        <div className="down"></div>
+      </div>
+
+      <CategoryModal
+        showModal={showModal}
+        closeModal={() => setShowModal(false)}
+        selectedCategoryId={selectedCategoryId}
+        chooseQuiz={chooseQuiz}
+      />
+    </>
+  );
 }
 
 export default Home;

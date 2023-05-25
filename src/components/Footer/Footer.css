@@ -1,6 +1,25 @@
-.footer {position: fixed;
+.footer {
+  position: fixed;
   left: 0;
   bottom: 0;
   width: 100%;
+ z-index: 300;
+ background: linear-gradient(to left, #FF0080 , #ff00cc, #333399);
+ text-align: center;
+ color: white;
+ letter-spacing: 4px;
+ text-transform: uppercase;
+ font-weight: bold;
+ font-size: 13px;
+ height: 55px;
+
 }
-/* 222 */
+.div{
+  text-align: center;
+  padding: 1.1%;
+}
+.div a {
+  color: white;
+  text-decoration: none;
+}
+

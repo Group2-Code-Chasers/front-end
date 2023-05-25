@@ -1,27 +1,24 @@
 import "./Footer.css"
+import Container from 'react-bootstrap/Container';
+import 'bootstrap/dist/css/bootstrap.css';
 import React from 'react';
-import {
-  MDBFooter,
-  MDBContainer
-} 
-from 'mdb-react-ui-kit';
+ 
+
 function Footer(){
     return(
-        <div className="footer">
-        <MDBFooter className='bg-dark text-center text-white'>
-        <MDBContainer className='p-4 pb-0'>
-         
-        </MDBContainer>
-  
-        <div className='text-center p-3' style={{ backgroundColor: 'black' , textAlign:'center'}}>
-          © 2023 Copyright: 
-          <a className='text-white' href='#/'>
+      <>
+    
+      
+        <div className='footer'>
+        <div className='div' >
+          © Copyright  2023  
+          <a  href='#'>
              Quizzers.com
           </a>
         </div>
-      </MDBFooter>    
-      </div>
-    //   hi5
+      </div>    
+   
+   </>
     )
 }
 
