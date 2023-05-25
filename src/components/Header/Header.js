@@ -3,7 +3,7 @@ import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 import 'bootstrap/dist/css/bootstrap.css';
-import logo from './QUIZZER__5_-removebg-preview1.png'
+import logo from './QUIZZER__7_-removebg-preview1.png'
 function NavBar() {
   return (
     <>

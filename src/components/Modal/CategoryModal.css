@@ -1,0 +1,123 @@
+
+
+.crazy-title {
+    font-size: 20px;
+
+    color: #17171a;
+    font-family: 'Josefin Sans',sans-serif;
+   
+}
+
+
+.crazy-button-container {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 20px;
+}
+
+
+   .crazy-button {
+    transition: all 0.3s ease-in-out;
+    font-family: 'Josefin Sans',sans-serif;
+  }
+  
+  .crazy-button {
+    width: 120px;
+    height: 50px;
+    border-radius: 50px;
+    background-image: linear-gradient(135deg, #47C9FF 0%, #FFDE59 100%);
+    box-shadow: 0 20px 30px -6px rgba(229, 238, 97, 0.822);
+    outline: none;
+    cursor: pointer;
+    border: none;
+    font-size: 16px;
+    color: #000011;
+  }
+  
+  .crazy-button:hover {
+    transform: translateY(3px);
+    box-shadow: none;
+  }
+  
+  .crazy-button:active {
+    opacity: 0.5;
+  }
+
+   /* inputs*/
+   .input {
+    color: #000000;
+    font-size: 0.5rem;
+    background-color: transparent;
+    width: 100%;
+    box-sizing: border-box;
+    padding-inline: 0.5em;
+    padding-block: 0.7em;
+    border: none;
+    border-bottom: var(--border-height) solid var(--border-before-color);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    outline: none;
+  }
+  .form-control:focus , .form.Select:focus{
+    outline: none;
+    box-shadow: none;
+  }
+  
+  .input-border {
+    position: absolute;
+    background: var(--border-after-color);
+    width: 0%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    transition: width 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+  }
+  
+  .input:focus , .custom-select:focus {
+    outline: none;
+  }
+  
+  .input:focus + .input-border {
+    width: 100%;
+  }
+  
+  .ss {
+    position: relative;
+    --width-of-input: 300px;
+  }
+  
+  .input-alt {
+    font-size: .9rem;
+    padding-inline: 1em;
+    padding-block: 0.8em;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: 'Josefin Sans',sans-serif;
+  }
+  
+  .input-border-alt {
+    height: 3px;
+    background: linear-gradient(90deg, #f1fa78 0%, #f4ff59 50%, #47C9FF 100%);
+    transition: width 0.4s cubic-bezier(0.42, 0, 0.58, 1.00);
+  }
+  
+  .input-alt:focus + .input-border-alt {
+    width: 100%;
+    
+  }
+
+ .crazy-label{
+    font-family: 'Josefin Sans',sans-serif;
+    font-size: 20px;
+ }
+
+ .options{
+    padding: 1%;
+ }
+  .custom-select :hover,
+.custom-select :focus {
+  background-color: #ffffff;
+  color: black;
+}
+.custom-select .option:hover {
+    background-color: #333399;
+    color: #ffffff;
+  }

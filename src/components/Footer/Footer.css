@@ -4,14 +4,16 @@
   bottom: 0;
   width: 100%;
  z-index: 300;
- background: linear-gradient(to left, #FF0080 , #ff00cc, #333399);
+ background: #021430;
  text-align: center;
  color: white;
  letter-spacing: 4px;
  text-transform: uppercase;
  font-weight: bold;
- font-size: 13px;
+ font-size: 12px;
  height: 55px;
+ font-family: 'Josefin Sans',sans-serif;
+
 
 }
 .div{
