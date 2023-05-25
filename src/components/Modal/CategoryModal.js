@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import "./CategoryModal.css";
 
 function CategoryModal(props) {
   const [name, setName] = useState('');
@@ -15,61 +16,64 @@ function CategoryModal(props) {
       props.closeModal();
     }
   };
-  
+
 
 
 
 
   return (
-    <Modal show={props.showModal} onHide={props.closeModal}>
+    <Modal show={props.showModal} onHide={props.closeModal} >
       <Modal.Header closeButton>
-        <Modal.Title>Choose Quiz</Modal.Title>
+        <Modal.Title className="crazy-title">Choose Quiz</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Form onSubmit={handleSubmit}>
           <Form.Group className="mb-3" controlId="formName">
-            <Form.Label>Enter Your Name</Form.Label>
+            <Form.Label className="crazy-label">Enter Your Name</Form.Label>
             <Form.Control
               type="text"
               placeholder="Enter your name"
-              value={name}
-              onChange={e => setName(e.target.value)}
               required
-            />
+              className=" input input-alt"
+            /><span class="input-border input-border-alt"></span>
           </Form.Group>
-          <Form.Group className="mb-3" controlId="formNumQuestions">
-            <Form.Label>Number Of Questions:</Form.Label>
+          <Form.Group className="mb-3 ss" controlId="formNumQuestions" >
+            <Form.Label className="crazy-label">Number Of Questions</Form.Label>
             <Form.Control
               type="number"
               placeholder="Enter the number of questions"
               min={1}
               max={30}
-              value={numQuestions}
-              onChange={e => setNumQuestions(e.target.value)}
               required
-            />
+              className=" input input-alt"
+            /> <span class="input-border input-border-alt"></span>
           </Form.Group>
-          <Form.Group className="mb-3" controlId="formDifficulty">
-            <Form.Label>Difficulty</Form.Label>
-            <Form.Select
-              value={difficulty}
-              onChange={e => setDifficulty(e.target.value)}
-              required
-            >
-              <option value="easy">Easy</option>
-              <option value="medium">Medium</option>
-              <option value="hard">Hard</option>
+
+          <Form.Group className="mb-3 ss" controlId="formDifficulty">
+            <Form.Label className="crazy-label">Difficulty</Form.Label>
+            <Form.Select required className=" input input-alt custom-select">
+              <option value="easy" className='options'>Easy</option>
+              <option value="medium" className='options'>Medium</option>
+              <option value="hard" className='options'>Hard</option>
             </Form.Select>
+            <span class="input-border input-border-alt"></span>
           </Form.Group>
-          <Button variant="primary" type="submit">
-            Submit
-          </Button>
+          <div className="crazy-button-container">
+            <Button variant="primary" type="submit" className='crazy-button'>
+            Let's go
+            </Button>
+            <Button variant="secondary" onClick={props.closeModal} className='crazy-button'>
+            <span class="text">Close</span>
+              <span class="blob"></span>
+              <span class="blob"></span>
+              <span class="blob"></span>
+              <span class="blob"></span>
+            </Button>
+          </div>
         </Form>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="secondary" onClick={props.closeModal}>
-          Close
-        </Button>
+
       </Modal.Footer>
     </Modal>
   );
