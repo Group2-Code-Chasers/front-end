@@ -9,6 +9,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowDown } from '@fortawesome/free-solid-svg-icons';
 import ArrowDownIcon from './ArrowDownIcon';
 
+import Quiz from '../Quiz/Quiz';
+
 import 'typeface-josefin-sans';
 
 import 'bootstrap/dist/css/bootstrap.css';
@@ -21,7 +23,8 @@ function Home() {
     const [numQuestions, setNumQuestions] = useState(5);
     const [difficulty, setDifficulty] = useState('easy');
     const [showModal, setShowModal] = useState(false);
-
+    const [quizQustions,setquizQustions] = useState([]);
+    const [submitted, setSubmitted] = useState(false);
 
 
 
@@ -32,6 +35,7 @@ function Home() {
             .get(serverURL)
             .then(response => {
                 console.log(response.data);
+                setquizQustions(response.data);
             })
             .catch(error => {
                 console.log(error);
@@ -76,6 +80,15 @@ function Home() {
     useEffect(() => {
         getallCategory();
     }, []);
+    
+
+    if (submitted) {
+        return (
+          <Quiz
+          quizQustions={quizQustions}
+          />
+        );
+      }
 
     return (
         <>
@@ -105,7 +118,6 @@ function Home() {
                         ))}
                     </Row>
                 </Container>
-                <div className="down"></div>
             </div>
 
             <CategoryModal
@@ -113,7 +125,9 @@ function Home() {
                 closeModal={() => setShowModal(false)}
                 selectedCategoryId={selectedCategoryId}
                 chooseQuiz={chooseQuiz}
+                setSubmitted={setSubmitted}
             />
+            
         </>
     );
 }
