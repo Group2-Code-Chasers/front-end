@@ -26,7 +26,7 @@ function Home() {
 
 
     const chooseQuiz = (categoryId, numQuestions, difficulty) => {
-        const serverURL = `http://localhost:3000/choosequiz?categoryId=${categoryId}&amount=${numQuestions}&difficulty=${difficulty}`;
+        const serverURL = `http://localhost:3003/choosequiz?categoryId=${categoryId}&amount=${numQuestions}&difficulty=${difficulty}`;
 
         axios
             .get(serverURL)
@@ -50,7 +50,7 @@ function Home() {
 
 
     const getallCategory = () => {
-        const serverURL = `http://localhost:3000/getAllCategories`;
+        const serverURL = `http://localhost:3003/getAllCategories`;
 
         axios
             .get(serverURL)
