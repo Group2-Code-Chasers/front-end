@@ -2,20 +2,28 @@ import React, { useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import Quiz from '../Quiz/Quiz'
 
 function CategoryModal(props) {
   const [name, setName] = useState('');
   const [numQuestions, setNumQuestions] = useState('');
   const [difficulty, setDifficulty] = useState('easy');
 
+  
+
   const handleSubmit = event => {
     event.preventDefault();
     if (name && numQuestions && difficulty) {
       props.chooseQuiz(props.selectedCategoryId, numQuestions, difficulty);
-      props.closeModal();
+      // props.setSubmitted(true);
     }
   };
   
+  const handleClose = () => {
+    props.closeModal();
+  };
+
+ 
 
 
 

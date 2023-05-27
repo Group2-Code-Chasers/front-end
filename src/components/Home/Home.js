@@ -9,33 +9,28 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowDown } from '@fortawesome/free-solid-svg-icons';
 import ArrowDownIcon from './ArrowDownIcon';
 
+import Quiz from '../Quiz/Quiz';
+
 import 'typeface-josefin-sans';
 
 import 'bootstrap/dist/css/bootstrap.css';
 import './Home.css';
 
-function Home() {
+function Home(props) {
     const [categoryData, setCategoryData] = useState([]);
     const [selectedCategoryId, setSelectedCategoryId] = useState(null);
     const [name, setName] = useState('');
     const [numQuestions, setNumQuestions] = useState(5);
     const [difficulty, setDifficulty] = useState('easy');
     const [showModal, setShowModal] = useState(false);
-
+    // const [quizQustions, setquizQustions] = useState([]);
+    // const [submitted, setSubmitted] = useState(false);
 
 
 
     const chooseQuiz = (categoryId, numQuestions, difficulty) => {
-        const serverURL = `http://localhost:3003/choosequiz?categoryId=${categoryId}&amount=${numQuestions}&difficulty=${difficulty}`;
 
-        axios
-            .get(serverURL)
-            .then(response => {
-                console.log(response.data);
-            })
-            .catch(error => {
-                console.log(error);
-            });
+        props.onStartQuiz(categoryId, numQuestions, difficulty);
     };
 
 
@@ -43,10 +38,10 @@ function Home() {
 
 
 
-    const handleSubmit = event => {
-        event.preventDefault();
-        chooseQuiz(selectedCategoryId, numQuestions, difficulty);
-    };
+    // const handleSubmit = event => {
+    //     event.preventDefault();
+    //     chooseQuiz(selectedCategoryId, numQuestions, difficulty);
+    // };
 
 
     const getallCategory = () => {
@@ -71,11 +66,20 @@ function Home() {
         setShowModal(true);
     };
 
-    
+
 
     useEffect(() => {
         getallCategory();
     }, []);
+
+
+    // if (submitted) {
+    //     return (
+    //         <Quiz
+    //             quizQustions={quizQustions}
+    //         />
+    //     );
+    // }
 
     return (
         <>
@@ -85,12 +89,12 @@ function Home() {
                     <h1 className="hero-title">Welcome to <span className='quizzer'><strong>Quizzer!</strong></span></h1>
                     <h2 className="hero-subtitle">where knowledge meets excitement!</h2>
                     <p className="hero-description">
-                    Challenge yourself with our engaging quizzes and put your skills to the test.
+                        Challenge yourself with our engaging quizzes and put your skills to the test.
                     </p>
                 </Container>
-               <ArrowDownIcon />
+                <ArrowDownIcon />
             </Container>
-       
+
             <div className="mainContainer">
                 <Container className="Container">
                     <Row xs={1} sm={2} md={3} lg={4} xl={5} className="g-4">
@@ -105,7 +109,6 @@ function Home() {
                         ))}
                     </Row>
                 </Container>
-                <div className="down"></div>
             </div>
 
             <CategoryModal
@@ -113,7 +116,9 @@ function Home() {
                 closeModal={() => setShowModal(false)}
                 selectedCategoryId={selectedCategoryId}
                 chooseQuiz={chooseQuiz}
+                // setSubmitted={setSubmitted}
             />
+
         </>
     );
 }
