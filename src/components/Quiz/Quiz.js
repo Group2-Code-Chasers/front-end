@@ -43,7 +43,11 @@ const Quiz = (props) => {
   // Handle next question
   const handleNextQuestion = () => {
     const currentQuestion = questions[currentQuestionIndex];
-
+    console.log(selectedOption)
+    if( selectedOption===""){
+        setNumUnanswered(numUnanswered+1)
+        console.log(numUnanswered)
+    }
     if (!currentQuestion) {
       // console.error('Current question is undefined');
       return;
@@ -65,8 +69,7 @@ const Quiz = (props) => {
   useEffect(() => {
     if (currentQuestionIndex === questions.length - 1) {
       setQuizCompleted(true);
-      const numUnansweredQuestions = questions.length - currentQuestionIndex - 1;
-      setNumUnanswered(numUnansweredQuestions);
+      
       console.log("quiz completion")
     }
   }, [currentQuestionIndex, questions.length]);
