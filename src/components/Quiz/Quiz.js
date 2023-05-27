@@ -92,7 +92,7 @@ const Quiz = (props) => {
 
   // Handle quiz Submission
   const handleQuizSubmission = () => {
-    console.log("helio")
+    console.log(props.name)
     setQuizCompleted(true);
    return props.onQuizCompletion(quizCompleted);
 
@@ -161,6 +161,7 @@ const Quiz = (props) => {
           <p>Score: {calculateScorePercentage()}%</p>
           <p>Number of Correct Answers: {numCorrectAnswers}</p>
           <p>Number of Unanswered Questions: {numUnanswered}</p>
+          
         </div>
       ) : (
         <p>Score: {score}</p>

@@ -16,15 +16,17 @@ function App() {
   const [category, setCategory] = useState(0);
   const [numQuestions, setNumQuestions] = useState(0);
   const [difficulty, setDifficulty] = useState('');
+  const [name, setName] = useState('');
   const [quizCompleted, setQuizCompleted] = useState(false);
   const [score, setScore] = useState(0);
 
 
-  const handleStartQuiz = (selectedCategory, selectedNumQuestions, selectedDifficulty) => {
+  const handleStartQuiz = (selectedCategory, selectedNumQuestions, selectedDifficulty, name) => {
     setQuizStarted(true);
     setCategory(selectedCategory);
     setNumQuestions(selectedNumQuestions);
     setDifficulty(selectedDifficulty);
+    setName(name);
     setQuizCompleted(false);
     setScore(0);
   };
@@ -66,6 +68,7 @@ function App() {
           difficulty={difficulty}
           onQuizCompletion={handleQuizCompletion}
           score={score}
+          name={name}
 
 
         />

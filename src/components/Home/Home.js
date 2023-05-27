@@ -23,25 +23,15 @@ function Home(props) {
     const [numQuestions, setNumQuestions] = useState(5);
     const [difficulty, setDifficulty] = useState('easy');
     const [showModal, setShowModal] = useState(false);
-    // const [quizQustions, setquizQustions] = useState([]);
-    // const [submitted, setSubmitted] = useState(false);
+  
 
 
 
-    const chooseQuiz = (categoryId, numQuestions, difficulty) => {
+    const chooseQuiz = (categoryId, numQuestions, difficulty, name) => {
 
-        props.onStartQuiz(categoryId, numQuestions, difficulty);
+        props.onStartQuiz(categoryId, numQuestions, difficulty, name);
     };
 
-
-
-
-
-
-    // const handleSubmit = event => {
-    //     event.preventDefault();
-    //     chooseQuiz(selectedCategoryId, numQuestions, difficulty);
-    // };
 
 
     const getallCategory = () => {
