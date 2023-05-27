@@ -11,7 +11,7 @@ const Quiz = (props) => {
   const [numCorrectAnswers, setNumCorrectAnswers] = useState(0);
   const [numUnanswered, setNumUnanswered] = useState(0);
 
-  // Fetch questions from the Open Trivia API based on category, numQuestions, and difficulty//////////
+  // Fetch questions from the Open Trivia API based on category, numQuestions, and difficulty
   useEffect(() => {
     const fetchQuestions = async () => {
       const serverURL = `http://localhost:3003/choosequiz?categoryId=${props.category}&amount=${props.numQuestions}&difficulty=${props.difficulty}&type=multiple`;
@@ -43,11 +43,12 @@ const Quiz = (props) => {
   // Handle next question
   const handleNextQuestion = () => {
     const currentQuestion = questions[currentQuestionIndex];
-    console.log(selectedOption)
-    if( selectedOption===""){
-        setNumUnanswered(numUnanswered+1)
-        console.log(numUnanswered)
-    }
+
+    if( (selectedOption==="") && !(currentQuestionIndex >= questions.length  && questions.length > 0 )){ 
+      setNumUnanswered(numUnanswered+1)
+      console.log(numUnanswered)
+  }
+
     if (!currentQuestion) {
       // console.error('Current question is undefined');
       return;
@@ -65,16 +66,16 @@ const Quiz = (props) => {
     setTimer(10);
   };
 
-  // Check for quiz completion//
+  // Check for quiz completion
   useEffect(() => {
-    if (currentQuestionIndex === questions.length - 1) {
+    if (currentQuestionIndex >= questions.length  && questions.length > 0) {//the condition currentQuestionIndex >= questions.length is used to check if all the questions have been answered. and the condition questions.length > 0 is added to ensure that the quiz completion logic is executed only when there are questions available./to fix not rendering the l
       setQuizCompleted(true);
-      
       console.log("quiz completion")
     }
   }, [currentQuestionIndex, questions.length]);
 
-  // Timer countdown effect//
+
+  // Timer countdown effect
   useEffect(() => {
     if (timer === 0) {
       handleNextQuestion();
@@ -89,46 +90,46 @@ const Quiz = (props) => {
     };
   }, [timer]);
 
-// Render question and options
-const renderQuestion = () => {
-  if (quizCompleted || currentQuestionIndex >= questions.length) {
-    return null; // Return null instead of displaying "Loading questions..."
-    // props.onQuizCompletion(quizCompleted);
+  // Render question and options
+  const renderQuestion = () => {
+    if (quizCompleted || currentQuestionIndex >= questions.length || questions.length === 0) {
+      return null; // Return null instead of displaying "Loading questions..."
+    }
 
-  }
+    const currentQuestion = questions[currentQuestionIndex];
 
-  const currentQuestion = questions[currentQuestionIndex];
-
-  return (
-    <div>
-      <h3>Question {currentQuestionIndex + 1}</h3>
-      <p>{currentQuestion.question}</p>
-      <ul>
-        {currentQuestion.options.map((option, index) => (
-          <li
-            key={index}
-            onClick={() => handleOptionSelect(option)}
-            style={{ backgroundColor: selectedOption === option ? 'lightblue' : 'white' }}
-          >
-            {option}
-          </li>
-        ))}
-      </ul>
-      <button disabled={!selectedOption} onClick={handleNextQuestion}>
-        Next
-      </button>
-      <p>Timer: {timer}</p>
-    </div>
-  );
-};
+    return (
+      <div>
+        <h3>Question {currentQuestionIndex + 1}</h3>
+        <p>{currentQuestion.question}</p>
+        <ul>
+          {currentQuestion.options.map((option, index) => (
+            <li
+              key={index}
+              onClick={() => handleOptionSelect(option)}
+              style={{ backgroundColor: selectedOption === option ? 'lightblue' : 'white' }}
+            >
+              {option}
+            </li>
+          ))}
+        </ul>
+        <button disabled={!selectedOption} onClick={handleNextQuestion}>
+          Next
+        </button>
+        <p>Timer: {timer}</p>
+      </div>
+    );
+  };
 
   // Utility function to shuffle an array
   const shuffle = (array) => {
     const shuffledArray = [...array];
+
     for (let i = shuffledArray.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
     }
+
     return shuffledArray;
   };
 
