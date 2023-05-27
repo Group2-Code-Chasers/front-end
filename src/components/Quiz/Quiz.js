@@ -44,10 +44,10 @@ const Quiz = (props) => {
   const handleNextQuestion = () => {
     const currentQuestion = questions[currentQuestionIndex];
 
-    if( (selectedOption==="") && !(currentQuestionIndex >= questions.length  && questions.length > 0 )){ 
-      setNumUnanswered(numUnanswered+1)
+    if ((selectedOption === "") && !(currentQuestionIndex >= questions.length && questions.length > 0)) {
+      setNumUnanswered(numUnanswered + 1)
       console.log(numUnanswered)
-  }
+    }
 
     if (!currentQuestion) {
       // console.error('Current question is undefined');
@@ -68,7 +68,7 @@ const Quiz = (props) => {
 
   // Check for quiz completion
   useEffect(() => {
-    if (currentQuestionIndex >= questions.length  && questions.length > 0) {//the condition currentQuestionIndex >= questions.length is used to check if all the questions have been answered. and the condition questions.length > 0 is added to ensure that the quiz completion logic is executed only when there are questions available./to fix not rendering the l
+    if (currentQuestionIndex >= questions.length && questions.length > 0) {//the condition currentQuestionIndex >= questions.length is used to check if all the questions have been answered. and the condition questions.length > 0 is added to ensure that the quiz completion logic is executed only when there are questions available./to fix not rendering the l
       setQuizCompleted(true);
       console.log("quiz completion")
     }
@@ -90,10 +90,19 @@ const Quiz = (props) => {
     };
   }, [timer]);
 
+  // Handle quiz Submission
+  const handleQuizSubmission = () => {
+    console.log("helio")
+    setQuizCompleted(true);
+   return props.onQuizCompletion(quizCompleted);
+
+  }
+
+
   // Render question and options
   const renderQuestion = () => {
     if (quizCompleted || currentQuestionIndex >= questions.length || questions.length === 0) {
-      return null; // Return null instead of displaying "Loading questions..."
+      return props.onQuizCompletion(quizCompleted);; // Return null instead of displaying "Loading questions..."
     }
 
     const currentQuestion = questions[currentQuestionIndex];
@@ -113,9 +122,11 @@ const Quiz = (props) => {
             </li>
           ))}
         </ul>
-        <button disabled={!selectedOption} onClick={handleNextQuestion}>
-          Next
-        </button>
+
+        {(currentQuestionIndex >= questions.length - 1) ?
+          <button disabled={!selectedOption} onClick={handleQuizSubmission} >Submit</button>
+          :
+          <button disabled={!selectedOption} onClick={handleNextQuestion} >Next</button>}
         <p>Timer: {timer}</p>
       </div>
     );
@@ -140,6 +151,7 @@ const Quiz = (props) => {
     const correctPercentage = (numCorrectAnswers / answeredQuestions) * 100;
     return correctPercentage.toFixed(2);
   };
+
 
   return (
     <div>

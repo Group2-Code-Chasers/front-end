@@ -73,13 +73,7 @@ function Home(props) {
     }, []);
 
 
-    // if (submitted) {
-    //     return (
-    //         <Quiz
-    //             quizQustions={quizQustions}
-    //         />
-    //     );
-    // }
+
 
     return (
         <>
@@ -116,7 +110,6 @@ function Home(props) {
                 closeModal={() => setShowModal(false)}
                 selectedCategoryId={selectedCategoryId}
                 chooseQuiz={chooseQuiz}
-                // setSubmitted={setSubmitted}
             />
 
         </>
