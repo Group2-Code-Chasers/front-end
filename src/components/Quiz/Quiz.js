@@ -45,7 +45,7 @@ const Quiz = (props) => {
     const currentQuestion = questions[currentQuestionIndex];
 
     if (!currentQuestion) {
-      console.error('Current question is undefined');
+      // console.error('Current question is undefined');
       return;
     }
 
@@ -86,36 +86,38 @@ const Quiz = (props) => {
     };
   }, [timer]);
 
-  // Render question and options
-  const renderQuestion = () => {
-    if (!questions.length || currentQuestionIndex >= questions.length) {
-      return <div>Loading questions...</div>;
-    }
+// Render question and options
+const renderQuestion = () => {
+  if (quizCompleted || currentQuestionIndex >= questions.length) {
+    return null; // Return null instead of displaying "Loading questions..."
+    // props.onQuizCompletion(quizCompleted);
 
-    const currentQuestion = questions[currentQuestionIndex];
+  }
 
-    return (
-      <div>
-        <h3>Question {currentQuestionIndex + 1}</h3>
-        <p>{currentQuestion.question}</p>
-        <ul>
-          {currentQuestion.options.map((option, index) => (
-            <li
-              key={index}
-              onClick={() => handleOptionSelect(option)}
-              style={{ backgroundColor: selectedOption === option ? 'lightblue' : 'white' }}
-            >
-              {option}
-            </li>
-          ))}
-        </ul>
-        <button disabled={!selectedOption} onClick={handleNextQuestion}>
-          Next
-        </button>
-        <p>Timer: {timer}</p>
-      </div>
-    );
-  };
+  const currentQuestion = questions[currentQuestionIndex];
+
+  return (
+    <div>
+      <h3>Question {currentQuestionIndex + 1}</h3>
+      <p>{currentQuestion.question}</p>
+      <ul>
+        {currentQuestion.options.map((option, index) => (
+          <li
+            key={index}
+            onClick={() => handleOptionSelect(option)}
+            style={{ backgroundColor: selectedOption === option ? 'lightblue' : 'white' }}
+          >
+            {option}
+          </li>
+        ))}
+      </ul>
+      <button disabled={!selectedOption} onClick={handleNextQuestion}>
+        Next
+      </button>
+      <p>Timer: {timer}</p>
+    </div>
+  );
+};
 
   // Utility function to shuffle an array
   const shuffle = (array) => {

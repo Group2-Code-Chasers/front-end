@@ -31,9 +31,9 @@ function App() {
 
 
   
-  const handleQuizCompletion = (finalScore) => {
-    setQuizCompleted(true);
-    setScore(finalScore);
+  const handleQuizCompletion = (quizCompleted) => {
+    setQuizCompleted(quizCompleted);
+    // setScore(finalScore);
   };
 
   const handleRetryQuiz = () => {
