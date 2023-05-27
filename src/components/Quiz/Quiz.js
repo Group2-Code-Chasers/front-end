@@ -11,7 +11,7 @@ const Quiz = (props) => {
   const [numCorrectAnswers, setNumCorrectAnswers] = useState(0);
   const [numUnanswered, setNumUnanswered] = useState(0);
 
-  // Fetch questions from the Open Trivia API based on category, numQuestions, and difficulty
+  // Fetch questions from the Open Trivia API based on category, numQuestions, and difficulty//////////
   useEffect(() => {
     const fetchQuestions = async () => {
       const serverURL = `http://localhost:3003/choosequiz?categoryId=${props.category}&amount=${props.numQuestions}&difficulty=${props.difficulty}&type=multiple`;
@@ -65,7 +65,7 @@ const Quiz = (props) => {
     setTimer(10);
   };
 
-  // Check for quiz completion
+  // Check for quiz completion//
   useEffect(() => {
     if (currentQuestionIndex === questions.length - 1) {
       setQuizCompleted(true);
@@ -74,7 +74,7 @@ const Quiz = (props) => {
     }
   }, [currentQuestionIndex, questions.length]);
 
-  // Timer countdown effect
+  // Timer countdown effect//
   useEffect(() => {
     if (timer === 0) {
       handleNextQuestion();
