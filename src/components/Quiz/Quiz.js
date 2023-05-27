@@ -1,26 +1,174 @@
-import { Container, Row, Col, Button } from 'react-bootstrap';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
-function Quiz(props) {
+const Quiz = (props) => {
+  const [questions, setQuestions] = useState([]);
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [selectedOption, setSelectedOption] = useState('');
+  const [score, setScore] = useState(0);
+  const [timer, setTimer] = useState(10); // Timer in seconds
+  const [quizCompleted, setQuizCompleted] = useState(false);
+  const [numCorrectAnswers, setNumCorrectAnswers] = useState(0);
+  const [numUnanswered, setNumUnanswered] = useState(0);
+
+  // Fetch questions from the Open Trivia API based on category, numQuestions, and difficulty
+  useEffect(() => {
+    const fetchQuestions = async () => {
+      const serverURL = `http://localhost:3003/choosequiz?categoryId=${props.category}&amount=${props.numQuestions}&difficulty=${props.difficulty}&type=multiple`;
+
+      try {
+        const response = await axios.get(serverURL);
+        const fetchedQuestions = response.data.map((question) => {
+          const options = [...question.incorrect_answers, question.correct_answer];
+          const shuffledOptions = shuffle(options);
+          return {
+            ...question,
+            options: shuffledOptions,
+          };
+        });
+        setQuestions(fetchedQuestions);
+      } catch (error) {
+        console.error('Error fetching questions:', error);
+      }
+    };
+
+    fetchQuestions();
+  }, [props.category, props.numQuestions, props.difficulty]);
+
+  // Handle option selection
+  const handleOptionSelect = (option) => {
+    setSelectedOption(option);
+  };
+
+  // Handle next question
+  const handleNextQuestion = () => {
+    const currentQuestion = questions[currentQuestionIndex];
+
+    if ((selectedOption === "") && !(currentQuestionIndex >= questions.length && questions.length > 0)) {
+      setNumUnanswered(numUnanswered + 1)
+      console.log(numUnanswered)
+    }
+
+    if (!currentQuestion) {
+      // console.error('Current question is undefined');
+      return;
+    }
+
+    const isCorrectAnswer = selectedOption === currentQuestion.correct_answer;
+
+    if (isCorrectAnswer) {
+      setScore(score + 1);
+      setNumCorrectAnswers(numCorrectAnswers + 1);
+    }
+
+    setSelectedOption('');
+    setCurrentQuestionIndex(currentQuestionIndex + 1);
+    setTimer(10);
+  };
+
+  // Check for quiz completion
+  useEffect(() => {
+    if (currentQuestionIndex >= questions.length && questions.length > 0) {//the condition currentQuestionIndex >= questions.length is used to check if all the questions have been answered. and the condition questions.length > 0 is added to ensure that the quiz completion logic is executed only when there are questions available./to fix not rendering the l
+      setQuizCompleted(true);
+      console.log("quiz completion")
+    }
+  }, [currentQuestionIndex, questions.length]);
+
+
+  // Timer countdown effect
+  useEffect(() => {
+    if (timer === 0) {
+      handleNextQuestion();
+    }
+
+    const timerInterval = setInterval(() => {
+      setTimer((prevTimer) => prevTimer - 1);
+    }, 1000);
+
+    return () => {
+      clearInterval(timerInterval);
+    };
+  }, [timer]);
+
+  // Handle quiz Submission
+  const handleQuizSubmission = () => {
+    console.log(props.name)
+    setQuizCompleted(true);
+   return props.onQuizCompletion(quizCompleted);
+
+  }
+
+
+  // Render question and options
+  const renderQuestion = () => {
+    if (quizCompleted || currentQuestionIndex >= questions.length || questions.length === 0) {
+      return props.onQuizCompletion(quizCompleted);; // Return null instead of displaying "Loading questions..."
+    }
+
+    const currentQuestion = questions[currentQuestionIndex];
+
     return (
-        <>
-            <div className="mainContainer">
-                <Container className="Container">
-                    <Row xs={1} sm={2} md={3} lg={4} xl={5} className="g-4">
-                        {props.quizQustions.map(item => (
-                            <Col key={item.id}>
-                                <div className="cardBox">
-                                    <div className="card">
-                                        <span className="text">{item.question}</span>
-                                    </div>
-                                </div>
-                            </Col>
-                        ))}
-                    </Row>
-                </Container>
-            </div>
-            <Button className='primary'>Take another Quiz</Button>
-        </>
-    )
-}
+      <div>
+        <h3>Question {currentQuestionIndex + 1}</h3>
+        <p>{currentQuestion.question}</p>
+        <ul>
+          {currentQuestion.options.map((option, index) => (
+            <li
+              key={index}
+              onClick={() => handleOptionSelect(option)}
+              style={{ backgroundColor: selectedOption === option ? 'lightblue' : 'white' }}
+            >
+              {option}
+            </li>
+          ))}
+        </ul>
+
+        {(currentQuestionIndex >= questions.length - 1) ?
+          <button disabled={!selectedOption} onClick={handleQuizSubmission} >Submit</button>
+          :
+          <button disabled={!selectedOption} onClick={handleNextQuestion} >Next</button>}
+        <p>Timer: {timer}</p>
+      </div>
+    );
+  };
+
+  // Utility function to shuffle an array
+  const shuffle = (array) => {
+    const shuffledArray = [...array];
+
+    for (let i = shuffledArray.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
+    }
+
+    return shuffledArray;
+  };
+
+  // Calculate the score as a percentage
+  const calculateScorePercentage = () => {
+    const totalQuestions = questions.length;
+    const answeredQuestions = currentQuestionIndex;
+    const correctPercentage = (numCorrectAnswers / answeredQuestions) * 100;
+    return correctPercentage.toFixed(2);
+  };
+
+
+  return (
+    <div>
+      <h2>Quiz</h2>
+      {quizCompleted ? (
+        <div>
+          <p>Score: {calculateScorePercentage()}%</p>
+          <p>Number of Correct Answers: {numCorrectAnswers}</p>
+          <p>Number of Unanswered Questions: {numUnanswered}</p>
+          
+        </div>
+      ) : (
+        <p>Score: {score}</p>
+      )}
+      {renderQuestion()}
+    </div>
+  );
+};
 
 export default Quiz;

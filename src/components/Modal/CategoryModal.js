@@ -14,8 +14,8 @@ function CategoryModal(props) {
   const handleSubmit = event => {
     event.preventDefault();
     if (name && numQuestions && difficulty) {
-      props.chooseQuiz(props.selectedCategoryId, numQuestions, difficulty);
-      props.setSubmitted(true);
+      props.chooseQuiz(props.selectedCategoryId, numQuestions, difficulty, name);
+      // props.setSubmitted(true);
     }
   };
   
