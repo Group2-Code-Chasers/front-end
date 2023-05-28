@@ -6,8 +6,11 @@ import Footer from './components/Footer/Footer';
 import Home from './components/Home/Home';
 import Quiz from './components/Quiz/Quiz';
 import Result from './components/Result/Result';
-import Leaderboard from './components/Result/Result';
+
+
 import About from "./components/About/About"
+=======
+
 
 
 

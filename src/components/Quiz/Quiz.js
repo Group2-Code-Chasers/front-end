@@ -131,7 +131,9 @@ const Quiz = (props) => {
       <div>
         <h3 id="heading2">Question {currentQuestionIndex + 1}</h3>
         <p id="heading2">{currentQuestion.question}</p>
+
         <ul className='list'>
+
           {currentQuestion.options.map((option, index) => (
             <li 
               key={index}
