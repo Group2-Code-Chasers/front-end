@@ -21,9 +21,10 @@ const Quiz = (props) => {
         const response = await axios.get(serverURL);
         const fetchedQuestions = response.data.map((question) => {
           const options = [...question.incorrect_answers, question.correct_answer];
-          const shuffledOptions = shuffle(options);
+          const shuffledOptions = options.sort(() => Math.random() - .5)
           return {
             ...question,
+            question: decodeString(question.question), // Apply decodeString function on the question
             options: shuffledOptions,
           };
         });
@@ -34,7 +35,13 @@ const Quiz = (props) => {
     };
 
     fetchQuestions();
-  }, [props.category, props.numQuestions, props.difficulty]);
+  }, []);
+
+  function decodeString(str) {
+    const textArea = document.createElement('textarea');
+    textArea.innerHTML = str ;
+    return textArea.value;
+  };
 
   // Handle option selection
   const handleOptionSelect = (option) => {
@@ -125,9 +132,9 @@ const Quiz = (props) => {
     }
 
     const currentQuestion = questions[currentQuestionIndex];
-//////////////////////
+    //////////////////////
     return (
-      
+
       <div>
         <h3 id="heading2">Question {currentQuestionIndex + 1}</h3>
         <p id="heading2">{currentQuestion.question}</p>
@@ -135,7 +142,7 @@ const Quiz = (props) => {
         <ul className='list'>
 
           {currentQuestion.options.map((option, index) => (
-            <li 
+            <li
               key={index}
               onClick={() => handleOptionSelect(option)}
               className="options"
@@ -143,8 +150,8 @@ const Quiz = (props) => {
                 backgroundColor: selectedOption === option ? '#333' : '#484848',
                 color: selectedOption === option ? '#fff' : '#fff',
               }}
-              
-              // style={{ backgroundColor: selectedOption === option ? 'lightblue' : 'white' }}
+
+            // style={{ backgroundColor: selectedOption === option ? 'lightblue' : 'white' }}
             >
               {option}
             </li>
@@ -160,22 +167,24 @@ const Quiz = (props) => {
             Next
           </button>
         )}
-        
+
       </div>
     );
   };
 
   // Utility function to shuffle an array
-  const shuffle = (array) => {
-    const shuffledArray = [...array];
+  // const shuffle = (array) => {
+  //   const shuffledArray = [...array];
 
-    for (let i = shuffledArray.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
-    }
+  //   for (let i = shuffledArray.length - 1; i > 0; i--) {
+  //     const j = Math.floor(Math.random() * (i + 1));
+  //     [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
+  //   }
 
-    return shuffledArray;
-  };
+  //   return shuffledArray;
+  // };
+
+
 
   // Calculate the score as a percentage
   const calculateScorePercentage = () => {
@@ -201,7 +210,7 @@ const Quiz = (props) => {
         <p className="score" id="heading2">
           Score: {score}
         </p>
-        
+
       )}
       {renderQuestion()}
     </div>
