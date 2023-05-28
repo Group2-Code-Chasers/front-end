@@ -8,6 +8,11 @@ import Quiz from './components/Quiz/Quiz';
 import Result from './components/Result/Result';
 
 
+import About from "./components/About/About"
+
+
+
+
 
 function App() {
 
@@ -56,7 +61,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Home onStartQuiz={handleStartQuiz} />}></Route>
         </Routes>
-
+//////////////////////////////////////
 
       )}
 
