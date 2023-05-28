@@ -90,19 +90,30 @@ const Quiz = (props) => {
     };
   }, [timer]);
 
-  // Handle quiz Submission
-  const handleQuizSubmission = () => {
-    console.log(props.name)
-    setQuizCompleted(true);
-   return props.onQuizCompletion(quizCompleted);
-
-  }
-
+  const handleQuizSubmission = async () => {
+    try {
+      const serverURL = 'http://localhost:3003/savequiz';
+      const quizData = {
+        name: props.name,
+        numQuestions: questions.length,
+        numCorrectAnswers,
+        numUnanswered,
+        score: calculateScorePercentage(),
+      };
+  
+      await axios.post(serverURL, quizData);
+      setQuizCompleted(true);
+      props.onQuizCompletion(quizCompleted);
+    } catch (error) {
+      console.error('Error saving quiz:', error);
+    }
+  };
 
   // Render question and options
   const renderQuestion = () => {
     if (quizCompleted || currentQuestionIndex >= questions.length || questions.length === 0) {
-      return props.onQuizCompletion(quizCompleted);; // Return null instead of displaying "Loading questions..."
+      return props.onQuizCompletion(quizCompleted); // Return null instead of displaying "Loading questions..."
+      
     }
 
     const currentQuestion = questions[currentQuestionIndex];
@@ -147,8 +158,8 @@ const Quiz = (props) => {
   // Calculate the score as a percentage
   const calculateScorePercentage = () => {
     const totalQuestions = questions.length;
-    const answeredQuestions = currentQuestionIndex;
-    const correctPercentage = (numCorrectAnswers / answeredQuestions) * 100;
+    const answeredQuestions = (questions.length ) - numUnanswered;
+    const correctPercentage = (numCorrectAnswers / (questions.length )) * 100;
     return correctPercentage.toFixed(2);
   };
 
@@ -161,7 +172,7 @@ const Quiz = (props) => {
           <p>Score: {calculateScorePercentage()}%</p>
           <p>Number of Correct Answers: {numCorrectAnswers}</p>
           <p>Number of Unanswered Questions: {numUnanswered}</p>
-          
+
         </div>
       ) : (
         <p>Score: {score}</p>
