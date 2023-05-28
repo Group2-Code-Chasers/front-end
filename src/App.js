@@ -5,7 +5,7 @@ import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import Home from './components/Home/Home';
 import Quiz from './components/Quiz/Quiz';
-import Leaderboard from './components/Leaderboard/Leaderboard';
+import Leaderboard from './components/Result/Result';
 import About from "./components/About/About"
 
 
@@ -67,7 +67,7 @@ function App() {
           numQuestions={numQuestions}
           difficulty={difficulty}
           onQuizCompletion={handleQuizCompletion}
-          score={score}
+          //score={score}
           name={name}
 
 
