@@ -6,10 +6,8 @@ import Footer from './components/Footer/Footer';
 import Home from './components/Home/Home';
 import Quiz from './components/Quiz/Quiz';
 import Result from './components/Result/Result';
-
-
-import About from "./components/About/About"
-
+import About from "./components/About/About";
+import Game from "./components/Game/Game";
 
 
 
@@ -23,7 +21,7 @@ function App() {
   const [difficulty, setDifficulty] = useState('');
   const [name, setName] = useState('');
   const [quizCompleted, setQuizCompleted] = useState(false);
-  
+
 
 
   const handleStartQuiz = (selectedCategory, selectedNumQuestions, selectedDifficulty, name) => {
@@ -33,12 +31,12 @@ function App() {
     setDifficulty(selectedDifficulty);
     setName(name);
     setQuizCompleted(false);
-   
+
   };
 
 
-  
-  const handleQuizCompletion = (quizCompleted ) => {
+
+  const handleQuizCompletion = (quizCompleted) => {
     setQuizCompleted(quizCompleted);
   };
 
@@ -48,7 +46,7 @@ function App() {
     setNumQuestions(0);
     setDifficulty('');
     setQuizCompleted(false);
-  
+
   };
 
   return (
@@ -56,13 +54,17 @@ function App() {
 
       <Header />
 
-      {!quizStarted && !quizCompleted &&(
+      <Routes>
+        <Route path='/About' element={<About />}></Route>
+        <Route path='/Game' element={<Game />}></Route>
+      </Routes>
+
+      {!quizStarted && !quizCompleted && (
 
         <Routes>
           <Route path='/' element={<Home onStartQuiz={handleStartQuiz} />}></Route>
           <Route path='/about' element={<About/>}></Route>
         </Routes>
-//////////////////////////////////////
 
       )}
 
@@ -72,17 +74,13 @@ function App() {
           numQuestions={numQuestions}
           difficulty={difficulty}
           onQuizCompletion={handleQuizCompletion}
-
-
           name={name}
-
-
         />
       )}
 
 
       {quizCompleted && (
-        <Result  onRetryQuiz={handleRetryQuiz} />
+        <Result onRetryQuiz={handleRetryQuiz} />
       )}
 
       <Footer />
