@@ -125,15 +125,17 @@ const Quiz = (props) => {
     }
 
     const currentQuestion = questions[currentQuestionIndex];
-
+//////////////////////
     return (
       
       <div>
         <h3 id="heading2">Question {currentQuestionIndex + 1}</h3>
         <p id="heading2">{currentQuestion.question}</p>
-        <ul>
+
+        <ul className='list'>
+
           {currentQuestion.options.map((option, index) => (
-            <li
+            <li 
               key={index}
               onClick={() => handleOptionSelect(option)}
               className="options"
