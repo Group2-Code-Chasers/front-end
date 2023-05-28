@@ -6,7 +6,7 @@ import Footer from './components/Footer/Footer';
 import Home from './components/Home/Home';
 import Quiz from './components/Quiz/Quiz';
 import Leaderboard from './components/Leaderboard/Leaderboard';
-
+import About from "./components/About/About"
 
 
 function App() {
@@ -78,7 +78,9 @@ function App() {
       {quizCompleted && (
         <Leaderboard score={score} onRetryQuiz={handleRetryQuiz} />
       )}
-
+    <Routes> 
+ 
+      <Route path='/about' element={<About/>}> </Route></Routes> 
       <Footer />
 
     </>

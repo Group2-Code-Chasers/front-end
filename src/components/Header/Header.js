@@ -6,21 +6,29 @@ import 'bootstrap/dist/css/bootstrap.css';
 import logo from './QUIZZER__7_-removebg-preview1.png'
 function NavBar() {
   return (
-    <>
-
-      <Navbar className="nav">
+   <>
+<Navbar sticky="top">
+     
         <Container className="con">
-          <Navbar.Brand href="#home" className="brand" >
+          <Navbar.Brand href="/" className="brand" >
             <img 
               src={logo}
-              className="d-inline-block align-top logo"
+              className="logo"
               alt="React Bootstrap logo"
-            />
+            />  </Navbar.Brand><Navbar.Brand  className="about"id ="navbar">
+               <ul>
+            <li><a href="/">Home</a></li>
+           
+            <li><a href="/Leaderboard">Leaderboard</a></li>
+            <li><a href="/Flipping">Flipping Card</a></li>
+            <li><a href="/About">About Us</a></li>
+          </ul>
+          
           </Navbar.Brand>
-        </Container>
-      </Navbar>
-
-    </>
+        </Container></Navbar>
+        
+</>
+  
 
   );
 }
