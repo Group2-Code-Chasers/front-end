@@ -125,7 +125,7 @@ const Quiz = (props) => {
     }
 
     const currentQuestion = questions[currentQuestionIndex];
-
+//////////////////////
     return (
       
       <div>
