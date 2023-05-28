@@ -9,7 +9,7 @@ import Result from './components/Result/Result';
 
 
 import About from "./components/About/About"
-=======
+
 
 
 
