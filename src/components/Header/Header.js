@@ -8,7 +8,7 @@ function NavBar() {
   return (
    <>
 <Navbar sticky="top">
-     
+ 
         <Container className="con">
           <Navbar.Brand href="/" className="brand" >
             <img 
