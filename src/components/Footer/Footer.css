@@ -1,5 +1,5 @@
 .footer {
-  position: fixed;
+  background: #021430;
   left: 0;
   bottom: 0;
   width: 100%;
@@ -11,17 +11,65 @@
  text-transform: uppercase;
  font-weight: bold;
  font-size: 12px;
- height: 55px;
+
  font-family: 'Josefin Sans',sans-serif;
 
 
 }
 .div{
   text-align: center;
-  padding: 1.1%;
+ padding-top: 20px;
 }
 .div a {
   color: white;
   text-decoration: none;
 }
+.icons {
+  display: flex;
+  justify-content: space-around;
+float: left;
+}
 
+.icon{
+margin: 10px;
+  width: 25px;
+  height: 25px;
+  border-radius: 70%;
+  outline: 2px solid #ffffff;
+ transition-property: outline-offset , outline-color ,background-color ;
+ transition-duration:0.25s ;
+
+}
+.icon:hover{
+outline-offset: 4px;
+}
+.icons a{
+  margin: auto;
+}
+.icons :hover a{
+  animation: shake 0.25s;
+} @keyframes shake{
+  10%{
+ transform:rotate(15deg) 
+    
+  }
+  20%{
+      transform:rotate(-15deg) 
+    
+  }
+  30%{
+      transform:rotate(15deg) 
+    
+  }
+  40%{
+      transform:rotate(-15deg) 
+    
+  }
+}
+.website{
+  text-decoration: none;
+  color:#F4FF59 ;
+}
+.website:hover{
+  color: #ffffff;
+}
