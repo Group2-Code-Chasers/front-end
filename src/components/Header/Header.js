@@ -20,7 +20,7 @@ function NavBar() {
           <Navbar.Brand className="about" id="navbar">
             <ul>
               <li><a href="/">Home</a></li>
-              <li><a href="/Flipping">Flipping Card</a></li>
+              <li><a href="/Game">Flipping Card</a></li>
               <li><a href="/About">About Us</a></li>
             </ul>
           </Navbar.Brand>
