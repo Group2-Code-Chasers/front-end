@@ -5,7 +5,7 @@ import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import Home from './components/Home/Home';
 import Quiz from './components/Quiz/Quiz';
-import Leaderboard from './components/Leaderboard/Leaderboard';
+import Result from './components/Result/Result';
 
 
 
@@ -18,7 +18,7 @@ function App() {
   const [difficulty, setDifficulty] = useState('');
   const [name, setName] = useState('');
   const [quizCompleted, setQuizCompleted] = useState(false);
-  const [score, setScore] = useState(0);
+  
 
 
   const handleStartQuiz = (selectedCategory, selectedNumQuestions, selectedDifficulty, name) => {
@@ -28,14 +28,13 @@ function App() {
     setDifficulty(selectedDifficulty);
     setName(name);
     setQuizCompleted(false);
-    setScore(0);
+   
   };
 
 
   
-  const handleQuizCompletion = (quizCompleted) => {
+  const handleQuizCompletion = (quizCompleted ) => {
     setQuizCompleted(quizCompleted);
-    // setScore(finalScore);
   };
 
   const handleRetryQuiz = () => {
@@ -44,7 +43,7 @@ function App() {
     setNumQuestions(0);
     setDifficulty('');
     setQuizCompleted(false);
-    setScore(0);
+  
   };
 
   return (
@@ -67,7 +66,7 @@ function App() {
           numQuestions={numQuestions}
           difficulty={difficulty}
           onQuizCompletion={handleQuizCompletion}
-          score={score}
+          // score={score}
           name={name}
 
 
@@ -76,7 +75,7 @@ function App() {
 
 
       {quizCompleted && (
-        <Leaderboard score={score} onRetryQuiz={handleRetryQuiz} />
+        <Result  onRetryQuiz={handleRetryQuiz} />
       )}
 
       <Footer />
