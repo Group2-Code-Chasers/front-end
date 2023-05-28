@@ -1,13 +1,96 @@
 .nav{
+    background: #021430 ;
+    max-height: 65px;
+  width: 100%; 
+}
+.navbar{
+  
     /* background: linear-gradient(-90deg, #FF6464 0%, #FFBF59 50%, #47C9FF 100%); */
     background: #021430 ;
     max-height: 65px;
+  width: 100%;
+ 
+
 }
 
 .con{
-    max-height: 65px;
+   
+   flex-wrap: wrap;
+    max-height:65px;
+    width: 70%;
+    padding: 0;
 }
 
 .brand{
     max-height: 65px;
+}
+
+
+  #navbar ul {
+    list-style: none;
+   display: flex;
+justify-content:flex-end;
+   width:70%;
+   float: right;
+right: 0;
+padding-top: 20px;
+padding-left: 40%;
+
+  }
+  
+  #navbar ul a {
+    display: flex;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    color: #ffff ;
+    font-size: 1.2rem;
+    font-family: 'Josefin Sans', sans-serif;
+    flex-wrap: wrap;
+    
+}
+@media (max-width: 768px) {
+    .con {
+        padding: 0 0;
+    }
+
+    #navbar ul a {
+        font-size: 12px;
+        padding: 0.15rem 0.2rem;
+    }
+.logo{
+    width:110px;
+    height: 40px;
+}
+ 
+}
+
+@media (max-width: 576px) {
+    .con {
+        padding: 0px 0;
+    }
+
+    #navbar ul a {
+        font-size: 10px;
+        padding: 0.2rem 0.2rem;
+    }
+    .logo{
+        width:90px;
+        height: 18px;
+    }
+   
+}
+@media (max-width: 400px) {
+    .con {
+        padding: 0px 0;
+    }
+
+    #navbar ul a {
+        font-size: 8px;
+        padding: 0.05rem 0.05rem;
+    }
+
+    .logo{
+        width:80px;
+        height: 15px;
+    }
 }
