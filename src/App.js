@@ -63,6 +63,7 @@ function App() {
 
         <Routes>
           <Route path='/' element={<Home onStartQuiz={handleStartQuiz} />}></Route>
+          <Route path='/about' element={<About/>}></Route>
         </Routes>
 
       )}
