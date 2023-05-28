@@ -66,7 +66,8 @@ function App() {
           numQuestions={numQuestions}
           difficulty={difficulty}
           onQuizCompletion={handleQuizCompletion}
-          // score={score}
+
+
           name={name}
 
 
