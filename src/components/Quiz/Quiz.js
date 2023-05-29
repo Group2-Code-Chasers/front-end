@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './Quiz.css';
-
+import { css } from '@emotion/react';
+import { RingLoader } from 'react-spinners';
 const Quiz = (props) => {
   const [questions, setQuestions] = useState([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -11,8 +12,29 @@ const Quiz = (props) => {
   const [quizCompleted, setQuizCompleted] = useState(false);
   const [numCorrectAnswers, setNumCorrectAnswers] = useState(0);
   const [numUnanswered, setNumUnanswered] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
+  const [loadingMessage, setLoadingMessage] = useState('')
+  // in order to render the loading sentance a letter after another 
+  
+  useEffect(() => {
+    if (isLoading) {
+      const interval = setInterval(() => {
+        setLoadingMessage((prevMessage) => {
+          if (prevMessage === 'Loading questions...') {
+            clearInterval(interval);
+            return prevMessage;
+          } else {
+            const index = prevMessage.length + 1;
+            return 'Loading questions...'.substring(0, index);
+          }
+        });
+      }, 100);
 
+      return () => clearInterval(interval);
+    }
+  }, [isLoading]);
   // Fetch questions from the Open Trivia API based on category, numQuestions, and difficulty
+
   useEffect(() => {
     const fetchQuestions = async () => {
       const serverURL = `http://localhost:3003/choosequiz?categoryId=${props.category}&amount=${props.numQuestions}&difficulty=${props.difficulty}&type=multiple`;
@@ -28,12 +50,17 @@ const Quiz = (props) => {
             options: shuffledOptions,
           };
         });
-        setQuestions(fetchedQuestions);
+        setTimeout(() => {
+          setQuestions(fetchedQuestions);
+          setIsLoading(false);
+        }, 2000);
       } catch (error) {
         console.error('Error fetching questions:', error);
+        setIsLoading(false); 
       }
     };
-
+ 
+  
     fetchQuestions();
   }, []);
 
@@ -126,7 +153,21 @@ const Quiz = (props) => {
   };
 
   // Render question and options
-  const renderQuestion = () => {
+  const renderQuestion = () => { 
+    if (isLoading) {//to render the loader 
+      const override = css`
+      display: block;
+      margin: 0 auto;
+      border-color: red;
+    `;
+
+    return (
+      <div className="loading-container">
+        <RingLoader color="#123abc" css={override} size={200} className='ring'/>
+        <p className="loading-message">{loadingMessage}</p>
+      </div>
+    );
+    }
     if (quizCompleted || currentQuestionIndex >= questions.length || questions.length === 0) {
       return props.onQuizCompletion(quizCompleted); // Return null instead of displaying "Loading questions..."
     }
@@ -190,7 +231,7 @@ const Quiz = (props) => {
   const calculateScorePercentage = () => {
     const totalQuestions = questions.length;
     const answeredQuestions = questions.length - numUnanswered;
-    const correctPercentage = (numCorrectAnswers / answeredQuestions) * 100;
+    const correctPercentage = (numCorrectAnswers /totalQuestions) * 100;
     return correctPercentage.toFixed(2);
   };
 

@@ -65,9 +65,9 @@ function CategoryModal(props) {
               required
               className=" input input-alt custom-select"
             >
-              <option value="easy" className='options'>Easy</option>
-              <option value="medium" className='options'>Medium</option>
-              <option value="hard" className='options'>Hard</option>
+              <option value="easy" className='theoptions'>Easy</option>
+              <option value="medium" className='theoptions'>Medium</option>
+              <option value="hard" className='theoptions'>Hard</option>
             </Form.Select>
             <span class="input-border input-border-alt"></span>
           </Form.Group>

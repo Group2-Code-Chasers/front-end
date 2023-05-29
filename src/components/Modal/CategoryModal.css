@@ -107,15 +107,16 @@
   font-size: 20px;
 }
 
-.options{
+.theoptions{
   padding: 1%;
+ 
 }
 .custom-select :hover,
 .custom-select :focus {
 background-color: #ffffff;
 color: black;
 }
-.custom-select .option:hover {
+.custom-select .theoption:hover {
   background-color: #333399;
   color: #ffffff;
 }

@@ -11,9 +11,9 @@
  text-transform: uppercase;
  font-weight: bold;
  font-size: 12px;
-
- font-family: 'Josefin Sans',sans-serif;
-
+bottom: 0;
+top:100vh;
+align-items: flex-end;
 
 }
 .div{
@@ -24,10 +24,12 @@
   color: white;
   text-decoration: none;
 }
+
 .icons {
-  display: flex;
-  justify-content: space-around;
-float: left;
+ 
+  justify-content:center;
+
+
 }
 
 .icon{
@@ -38,6 +40,7 @@ margin: 10px;
   outline: 2px solid #ffffff;
  transition-property: outline-offset , outline-color ,background-color ;
  transition-duration:0.25s ;
+
 
 }
 .icon:hover{
@@ -72,4 +75,13 @@ outline-offset: 4px;
 }
 .website:hover{
   color: #ffffff;
-}
+}@media (max-width: 600px) {
+  .icon {
+ 
+ 
+    display: block;}
+    .icons{
+      justify-content: center;
+      padding-left: 50%;
+
+    }}
