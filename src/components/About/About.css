@@ -1,8 +1,8 @@
 :root {
-  --primary-color: #f2f54d;
-  --secondary-color: #47C9FF;
-  --background-color: #041f48;
-  --text-color: #17171a;
+  --primary-color: #0B2447;
+  --secondary-color: #19376D;
+  --third-color: #576CBC;
+  --fourth-color: #A5D7E8;
 }
 
 .about-us-container {
@@ -17,7 +17,7 @@
   align-items: center;
   justify-content: center;
   height: 500px;
-  background: var(--background-color);
+  background-color:#0B2447 ;
   overflow: hidden;
 }
 
@@ -26,6 +26,7 @@
   text-align: center;
   color: #ffffff;
 }
+
 
 .hero-content h1 {
   font-size: 36px;
@@ -51,17 +52,27 @@
 .who-we-are-section,
 .team-section {
   padding: 50px 0;
-  background: #ffffff;
+  background-color: #576CBC;
+  background-image: linear-gradient(to bottom right, #576CBC, #253d6b);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   text-align: center;
 }
 
 .section-content {
   max-width: 800px;
   margin: 0 auto;
+  
+}
+
+.who-text{
+  font-size: 20px;
+  color: #ffffff;
 }
 
 .section-content h2 {
-  font-size: 24px;
+  font-size: 40px;
+  color:#000000
 }
 
 .team-members {
@@ -76,7 +87,9 @@
   width: 280px;
   margin: 20px;
   padding: 20px;
-  background: #ffffff;
+  background-image: url('https://cdn.wallpapersafari.com/61/27/1CDvG0.jpg');
+  background-size: cover;
+  background-position: center;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
@@ -94,7 +107,11 @@
   margin: 0 auto;
   display: block;
 }
+.team-member .icon-img{
+  height: 30px;
+  width: 30px;
 
+}
 .team-member h3 {
   margin-top: 10px;
   font-size: 18px;
@@ -150,6 +167,50 @@
   100% {
     transform: rotate(360deg);
   }
+}
+
+.team-member {
+  background-color: #A5D7E8;
+  border: 1px solid #060404;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(26, 2, 207, 0.434);
+  transition: transform 0.9s ease-in-out, box-shadow 0.9s ease-in-out;
+  margin-bottom: 20px;
+}
+
+.team-member:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 18px rgba(73, 7, 255, 0.2);
+}
+
+.team-member img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.team-member h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+}
+
+.social-links a {
+  margin: 0 10px;
+  font-size: 24px;
+  color: #010101;
+}
+
+.social-links a:hover {
+  color: #7300ff;
 }
 
 
