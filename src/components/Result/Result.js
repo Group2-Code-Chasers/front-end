@@ -41,16 +41,16 @@ useEffect(() => {
                 {quizResult.score}%
               </span>
             </h4>
-            <p className="py-2">
+            <p className={(quizResult.score >= 50) ? "py-2": "py-3"}>
               You got {quizResult.numcorrectanswers}/{quizResult.numquestions}
             </p>
             <p>you have {quizResult.numunanswered} unanswered question</p>
           
             {(quizResult.score >= 50) ? <p className="py-2 font-medium">Congrats!!!</p>:
-            <p className="py-2 font-medium">Try to raise your score</p>
+            <p className="py-3 font-medium">Try to raise your score</p>
             }
             <button
-              className="bg-yellow-600 py-2 px-7 rounded-xl text-white mt-2 hover:bg-yellow-500"
+              className="bg-yellow-600 py-2 px-7 rounded-xl mt-2 hover:bg-yellow-500"
               id='playAgianButton'
               onClick={props.onRetryQuiz}
             >
