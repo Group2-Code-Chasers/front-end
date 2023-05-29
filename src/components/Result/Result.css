@@ -1,3 +1,29 @@
+.quizResultBody{
+  height: 100vh;
+    font-family: 'Josefin Sans', sans-serif;
+    background: url("https://s3.amazonaws.com/ritalbradley-dev-photos/twinkle-back.gif");
+}
+
+
+.quizResultBody:before {
+  width: 100%;
+  height: 100%;
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  background-image: linear-gradient(to left, rgba(11, 36, 71, 0.6),rgba(25, 55, 109, 0.6) );
+}
+
+.aboveRecontainer{
+  width: 100%;
+  padding: 5%;
+}
+  
+  
+
+
 .Recontainer {
   display: flex;
   flex-direction: column;
@@ -5,8 +31,8 @@
   align-items: center;
   height: 70vh;
   text-align: center;
-  margin: 50px 20%;
-  background-color:#ffffff;
+  margin: 0px 20%;
+  background-color: rgb(214, 233, 240);
   border-radius: 30px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   min-width: 100px;
@@ -17,8 +43,8 @@
 
 
 .Recontainer:hover {
-    border-color: #999;
-    background-color: #f1f1f1;
+    border-color: rgb(165, 215, 232);
+    background-color:rgb(165, 215, 232);
 }
 
 .h2QuizResult {
@@ -53,10 +79,10 @@
   font-weight: 600;
 }
 
-#playAgianButton {
+/* #playAgianButton {
   background-color: #3C486B; 
   color: #ffffff;
-}
+} */
 
 .py-2 {
   padding-top: 10px;
@@ -85,9 +111,36 @@
   margin-top: 15px;
 }
 
-#playAgianButton:hover{
+/* #playAgianButton:hover{
   background-color:#F9D949;
   color: #333;
+} */
+
+
+#playAgianButton {
+  padding: 0.5em;
+  padding-left: 1.1em;
+  padding-right: 1.1em;
+  border-radius: 30px;
+  margin-right: 0.5em;
+  border: none;
+  outline: none;
+  transition: .4s ease-in-out;
+  background-image: linear-gradient(163deg, rgb(165, 215, 232) 0%, rgb(87, 108, 188) 100%);
+  color: rgb(0, 0, 0);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* width: 200px; */
+  font-family: 'Nunito';
+  margin: 0 auto;
+  font-size: larger;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+#playAgianButton:hover {
+  background-image: linear-gradient(163deg, rgb(25, 55, 109) 0%, #13034B 100%);
+  color: var(--fourth-color)
 }
 
 /* Animation */
