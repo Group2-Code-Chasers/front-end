@@ -31,11 +31,11 @@ useEffect(() => {
   return (
 
     <>
-   <div className="Recontainer">
+   <div className="Recontainer fade-in">
  
-          <div className="">
-            <h2>{quizResult.name}</h2>
-            <h4 className="">
+         
+            <h2 className='h2QuizResult'>{quizResult.name}</h2>
+            <h4 className="h4QuizResult">
               Your score is{" "}
               <span className={quizResult.score > 40 ? "text-green-600" : "text-red-600"}>
                 {quizResult.score}%
@@ -45,12 +45,13 @@ useEffect(() => {
               You got {quizResult.numcorrectanswers}/{quizResult.numquestions}
             </p>
             <p>you have {quizResult.numunanswered} unanswered question</p>
-          </div>
+          
             {(quizResult.score >= 50) ? <p className="py-2 font-medium">Congrats!!!</p>:
             <p className="py-2 font-medium">Try to raise your score</p>
             }
             <button
               className="bg-yellow-600 py-2 px-7 rounded-xl text-white mt-2 hover:bg-yellow-500"
+              id='playAgianButton'
               onClick={props.onRetryQuiz}
             >
               Play Again
