@@ -1,3 +1,10 @@
+:root {
+    --primary-color: #0B2447;
+    --secondary-color: #19376D;
+    --third-color: #576CBC;
+    --fourth-color: #A5D7E8;
+  }
+
 /*cards styling*/
 
 .cardBox {
@@ -101,12 +108,15 @@
 /*hero*/
 .hero {
     background: rgb(43, 82, 182);
-    background: linear-gradient(90deg, rgba(43, 82, 182, 1) 0%, rgba(0, 212, 255, 1) 100%);
+    background-color: var(--secondary-color);
+    /* background: linear-gradient(90deg, rgba(43, 82, 182, 1) 0%, rgba(0, 212, 255, 1) 100%); */
     color: #ffffff;
     text-align: center;
     padding: 100px 0;
     height: 100vh;
     font-family: 'Josefin Sans', sans-serif;
+    display: flex;
+    justify-content: space-around;
 
 }
 
@@ -131,6 +141,11 @@
     font-size: 24px;
     margin-bottom: 0;
 }
+
+/* .photohome{
+    width: 300px;
+    height: 400px;
+} */
 
 @media (max-width: 768px) {
     .hero {
