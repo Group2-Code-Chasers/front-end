@@ -197,8 +197,8 @@ const Quiz = (props) => {
     return (
 
       <div>
-        <h3 id="heading2">Question {currentQuestionIndex + 1}</h3>
-        <p id="heading2">{currentQuestion.question}</p>
+        <h3 id="heading">Question {currentQuestionIndex + 1}</h3>
+        <p className="question-text">{currentQuestion.question}</p>
 
         <ul className='list'>
 
@@ -208,7 +208,7 @@ const Quiz = (props) => {
               onClick={() => handleOptionSelect(option)}
               className="options"
               style={{
-                backgroundColor: selectedOption === option ? '#333' : '#484848',
+                backgroundColor: selectedOption === option ? 'transparent' : '#0B2447',
                 color: selectedOption === option ? '#fff' : '#fff',
               }}
 
@@ -256,12 +256,11 @@ const Quiz = (props) => {
   };
 
   return (
-    
     <div className="quiz-container">
-      <h2 className="quiz-title" id="heading">
+      {/* <h2 className="quiz-title" id="heading">
         Quiz
-      </h2>
-      <p id="heading2">Timer: {timer}</p>
+      </h2> */}
+      {/* <p id="heading">Timer: {timer}</p> */}
       {quizCompleted ? (
         <div className="completion-container">
           <p className="score">Score: {calculateScorePercentage()}%</p>
@@ -269,9 +268,12 @@ const Quiz = (props) => {
           <p>Number of Unanswered Questions: {numUnanswered}</p>
         </div>
       ) : (
+        <div className='score-timer-container' >
+        <p id="heading2">Timer: {timer}</p>
         <p className="score" id="heading2">
           Score: {score}
         </p>
+        </div>
 
       )}
       {renderQuestion()}
