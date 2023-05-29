@@ -1,15 +1,104 @@
-/*.circle {
-    border-radius: 50%;
-    background-color: #000;
-    width: 50px;
-    height: 50px;
-    /* Add any additional styling as desired 
-  }*/
-  .Recontainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
- min-height: 100vh;
-   
+.Recontainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+  text-align: center;
+  margin: 50px 20%;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  min-width: 300px;
+  border: 2px solid #ccc;
+}
+
+/* Card-like design */
+
+
+.Recontainer:hover {
+  background-color: #f1f1f1;
+  border-color: #999;
+}
+
+.h2QuizResult {
+  font-size: 28px;
+  margin-bottom: 15px;
+  font-family: "Arial", sans-serif;
+  color: #333;
+}
+
+.h4QuizResult {
+  font-size: 20px;
+  margin-bottom: 10px;
+  font-family: "Arial", sans-serif;
+}
+
+.text-green-600 {
+  color: #00cc66; /* Green color */
+}
+
+.text-red-600 {
+  color: #ff3300; /* Red color */
+}
+
+.py-2 {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-family: "Arial", sans-serif;
+  color: #666;
+}
+
+.font-medium {
+  font-weight: 600;
+}
+
+.bg-yellow-600 {
+  background-color: #ffc107; /* Yellow color */
+}
+
+.py-2 {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-family: "Arial", sans-serif;
+  color: #666;
+}
+
+.px-7 {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.rounded-xl {
+  border-radius: 1rem;
+}
+
+.text-white {
+  color: #ffffff; /* White color */
+}
+
+.mt-2 {
+  margin-top: 15px;
+}
+
+.hover:bg-yellow-500:hover {
+  background-color: #ffb300; /* Hover color */
+}
+
+.playAgianButton:hover{
+  background-color:rgba(151, 68, 68, 0.1);
+}
+
+/* Animation */
+@keyframes fade {
+  0% {
+    opacity: 0;
   }
+  100% {
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  animation: fade 0.5s ease;
+}

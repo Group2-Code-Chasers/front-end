@@ -3,6 +3,7 @@ import axios from 'axios';
 import './Quiz.css';
 import { css } from '@emotion/react';
 import { RingLoader } from 'react-spinners';
+
 const Quiz = (props) => {
   const [questions, setQuestions] = useState([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -13,26 +14,10 @@ const Quiz = (props) => {
   const [numCorrectAnswers, setNumCorrectAnswers] = useState(0);
   const [numUnanswered, setNumUnanswered] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
-  const [loadingMessage, setLoadingMessage] = useState('')
-  // in order to render the loading sentance a letter after another 
-  
-  useEffect(() => {
-    if (isLoading) {
-      const interval = setInterval(() => {
-        setLoadingMessage((prevMessage) => {
-          if (prevMessage === 'Loading questions...') {
-            clearInterval(interval);
-            return prevMessage;
-          } else {
-            const index = prevMessage.length + 1;
-            return 'Loading questions...'.substring(0, index);
-          }
-        });
-      }, 100);
 
-      return () => clearInterval(interval);
-    }
-  }, [isLoading]);
+  const [isQuestionRendered, setIsQuestionRendered] = useState(false);
+
+ 
   // Fetch questions from the Open Trivia API based on category, numQuestions, and difficulty
 
   useEffect(() => {
@@ -53,6 +38,7 @@ const Quiz = (props) => {
         setTimeout(() => {
           setQuestions(fetchedQuestions);
           setIsLoading(false);
+          setIsQuestionRendered(true); // Set isQuestionRendered to true after rendering the questions
         }, 2000);
       } catch (error) {
         console.error('Error fetching questions:', error);
@@ -118,20 +104,22 @@ const Quiz = (props) => {
 
   // Timer countdown effect
   useEffect(() => {
-    if (timer === 0 && currentQuestionIndex === questions.length - 1) {
-      handleQuizSubmission();
-    } else if (timer === 0) {
-      handleNextQuestion();
+    if (isQuestionRendered) { // Start the timer only when the questions are rendered
+      if (timer === 0 && currentQuestionIndex === questions.length - 1) {
+        handleQuizSubmission();
+      } else if (timer === 0) {
+        handleNextQuestion();
+      }
+
+      const timerInterval = setInterval(() => {
+        setTimer((prevTimer) => prevTimer - 1);
+      }, 1000);
+
+      return () => {
+        clearInterval(timerInterval);
+      };
     }
-
-    const timerInterval = setInterval(() => {
-      setTimer((prevTimer) => prevTimer - 1);
-    }, 1000);
-
-    return () => {
-      clearInterval(timerInterval);
-    };
-  }, [timer]);
+  }, [timer, currentQuestionIndex, questions.length, isQuestionRendered]);
 
   const handleQuizSubmission = async () => {
     try {
@@ -155,6 +143,9 @@ const Quiz = (props) => {
   // Render question and options
   const renderQuestion = () => { 
     if (isLoading) {//to render the loader 
+
+
+      
       const override = css`
       display: block;
       margin: 0 auto;
@@ -162,12 +153,41 @@ const Quiz = (props) => {
     `;
 
     return (
-      <div className="loading-container">
-        <RingLoader color="#123abc" css={override} size={200} className='ring'/>
-        <p className="loading-message">{loadingMessage}</p>
-      </div>
+      <div>
+      <svg class="loader" viewBox="0 0 48 30" width="48px" height="30px">
+      <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1">
+        <g transform="translate(9.5,19)">
+          <circle class="loader_tire" r="9" stroke-dasharray="56.549 56.549"></circle>
+          <g class="loader_spokes-spin" stroke-dasharray="31.416 31.416" stroke-dashoffset="-23.562">
+            <circle class="loader_spokes" r="5"></circle>
+            <circle class="loader_spokes" r="5" transform="rotate(180,0,0)"></circle>
+          </g>
+        </g>
+        <g transform="translate(24,19)">
+          <g class="loader_pedals-spin" stroke-dasharray="25.133 25.133" stroke-dashoffset="-21.991" transform="rotate(67.5,0,0)">
+            <circle class="loader_pedals" r="4"></circle>
+            <circle class="loader_pedals" r="4" transform="rotate(180,0,0)"></circle>
+          </g>
+        </g>
+        <g transform="translate(38.5,19)">
+          <circle class="loader_tire" r="9" stroke-dasharray="56.549 56.549"></circle>
+          <g class="loader_spokes-spin" stroke-dasharray="31.416 31.416" stroke-dashoffset="-23.562">
+            <circle class="loader_spokes" r="5"></circle>
+            <circle class="loader_spokes" r="5" transform="rotate(180,0,0)"></circle>
+          </g>
+        </g>
+        <polyline class="loader_seat" points="14 3,18 3" stroke-dasharray="5 5"></polyline>
+        <polyline class="loader_body" points="16 3,24 19,9.5 19,18 8,34 7,24 19" stroke-dasharray="79 79"></polyline>
+        <path class="loader_handlebars" d="m30,2h6s1,0,1,1-1,1-1,1" stroke-dasharray="10 10"></path>
+        <polyline class="loader_front" points="32.5 2,38.5 19" stroke-dasharray="19 19"></polyline>
+      </g>
+    </svg>
+    <p className='theWords'>On Our Way Your Quiz...</p>
+    
+    </div>
     );
     }
+    
     if (quizCompleted || currentQuestionIndex >= questions.length || questions.length === 0) {
       return props.onQuizCompletion(quizCompleted); // Return null instead of displaying "Loading questions..."
     }
@@ -177,8 +197,8 @@ const Quiz = (props) => {
     return (
 
       <div>
-        <h3 id="heading2">Question {currentQuestionIndex + 1}</h3>
-        <p id="heading2">{currentQuestion.question}</p>
+        <h3 id="heading">Question {currentQuestionIndex + 1}</h3>
+        <p className="question-text">{currentQuestion.question}</p>
 
         <ul className='list'>
 
@@ -188,7 +208,7 @@ const Quiz = (props) => {
               onClick={() => handleOptionSelect(option)}
               className="options"
               style={{
-                backgroundColor: selectedOption === option ? '#333' : '#484848',
+                backgroundColor: selectedOption === option ? 'transparent' : '#0B2447',
                 color: selectedOption === option ? '#fff' : '#fff',
               }}
 
@@ -237,10 +257,10 @@ const Quiz = (props) => {
 
   return (
     <div className="quiz-container">
-      <h2 className="quiz-title" id="heading">
+      {/* <h2 className="quiz-title" id="heading">
         Quiz
-      </h2>
-      <p id="heading2">Timer: {timer}</p>
+      </h2> */}
+      {/* <p id="heading">Timer: {timer}</p> */}
       {quizCompleted ? (
         <div className="completion-container">
           <p className="score">Score: {calculateScorePercentage()}%</p>
@@ -248,9 +268,12 @@ const Quiz = (props) => {
           <p>Number of Unanswered Questions: {numUnanswered}</p>
         </div>
       ) : (
+        <div className='score-timer-container' >
+        <p id="heading2">Timer: {timer}</p>
         <p className="score" id="heading2">
           Score: {score}
         </p>
+        </div>
 
       )}
       {renderQuestion()}
