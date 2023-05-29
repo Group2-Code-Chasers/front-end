@@ -2,12 +2,8 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Container, Row, Col } from 'react-bootstrap';
 import CategoryModal from '../Modal/CategoryModal';
-
-
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowDown } from '@fortawesome/free-solid-svg-icons';
 import ArrowDownIcon from './ArrowDownIcon';
+import photohome from'./Levels 3.png';
 
 import Quiz from '../Quiz/Quiz';
 
@@ -75,6 +71,9 @@ function Home(props) {
                     <p className="hero-description">
                         Challenge yourself with our engaging quizzes and put your skills to the test.
                     </p>
+                </Container>
+                <Container>
+                    <img src={photohome} alt="photohome" className='photohome' />
                 </Container>
                 <ArrowDownIcon />
             </Container>

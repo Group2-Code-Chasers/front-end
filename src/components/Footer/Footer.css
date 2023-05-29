@@ -1,10 +1,15 @@
+:root {
+  --primary-color: #0b2447;
+  --secondary-color: rgb(25, 55, 109);
+  --third-color: #576CBC;
+  --fourth-color: #A5D7E8;
+}
 .footer {
-  background: #021430;
+  background: var(--primary-color);
   left: 0;
   bottom: 0;
   width: 100%;
  z-index: 300;
- background: #021430;
  text-align: center;
  color: white;
  letter-spacing: 4px;

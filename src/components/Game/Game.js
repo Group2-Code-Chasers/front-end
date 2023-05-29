@@ -60,9 +60,9 @@ function Game() {
     return (
         <>
             <form className="headerformflipping" onSubmit={handleSubmit}>
-                <div className="form-group">
+                <div className="form-groupflipping">
                     <label htmlFor="category">Category</label>
-                    <select id="category" ref={categoryEl}>
+                    <select id="category" ref={categoryEl} className="form-groupflipping-select">
                         {categories.map((category) => {
                             return (
                                 <option value={category.id} key={category.id}>
@@ -72,7 +72,7 @@ function Game() {
                         })}
                     </select>
                 </div>
-                <div className="form-group">
+                <div className="form-groupflipping">
                     <label htmlFor="amount">Number of Questions</label>
                     <input
                         type="number"
@@ -83,11 +83,11 @@ function Game() {
                         ref={amountEl}
                     />
                 </div>
-                <div className="form-group">
+                <div className="form-groupflipping">
                     <button className="btnGenerat">Generate</button>
                 </div>
             </form>
-            <div className="container">
+            <div className="gamecontainer">
                 <FlippingCardsList flashcards={flashcards} />
             </div>
         </>
