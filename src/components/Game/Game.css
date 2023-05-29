@@ -1,48 +1,80 @@
+@import url('https://fonts.googleapis.com/css?family=Faster+One|Monoton');
+:root {
+  --primary-color: #0b2447;
+  --secondary-color: rgb(25, 55, 109);
+  --third-color: #576CBC;
+  --fourth-color: #A5D7E8;
+}
+
 body {
-    background-color: #C8D0D2;
-    margin: 0;
-    font-family: 'Josefin Sans',sans-serif;
-  }
+  margin: 0;
+  font-family: 'Josefin Sans', sans-serif;
+  background: url("https://s3.amazonaws.com/ritalbradley-dev-photos/twinkle-back.gif");
+}
+
+body:before {
+  width: 100%;
+  height: 100%;
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  background-image: linear-gradient(to left, rgba(11, 36, 71, 0.6),rgba(25, 55, 109, 0.6) );
+  background-size: auto;
+}
+
+.gamecontainer {
+  min-height: 100vh;
+}
+
+.headerformflipping {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-wrap: wrap;
+  background-color: white;
+  padding: 0 1.5rem;
+  box-shadow: 0 0 5px 2px rgba(0, 0, 0, .3);
   
-  
-  /* .container {
-    max-width: 900px;
-    margin: 1rem 2rem;
-  } */
-  
-  .headerformflipping {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    flex-wrap: wrap;
-    background-color: white;
-    padding: 0 1.5rem;
-    box-shadow: 0 0 5px 2px rgba(0, 0, 0, .3);
-  }
-  
-  .form-group {
-    display: flex;
-    flex-direction: column;
-    margin: .5rem;
-  }
-  
-  .form-group > label {
-    color: #777;
-    font-size: .75rem;
-    margin-bottom: .25rem;
-  }
-  
-  .btnGenerat {
-    background-color: #041f48;
-    color: white;
-    padding: .5em 1em;
-    border-radius: .3em;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .btnGenerat:hover {
-    background-color: #f2f54d;
-    color: black;
-  }
-  
+}
+
+.form-groupflipping {
+  display: flex;
+  flex-direction: column;
+  margin: .5rem;
+
+}
+
+.form-groupflipping-select{
+padding: 2%;
+box-sizing: border-box;
+
+outline: none;
+}
+
+
+.form-groupflipping>label {
+  color: #777;
+  font-size: .75rem;
+  margin-bottom: .25rem;
+}
+
+.btnGenerat {
+  background-color: #041f48;
+  color: white;
+  padding: .5em 1em;
+  border-radius: .3em;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  font-family: 'Josefin Sans',sans-serif;
+  width: 120px;
+  height: 50px;
+  outline: none;
+
+}
+
+.btnGenerat:hover {
+  background-color:var(--secondary-color);
+}
