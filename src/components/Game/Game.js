@@ -123,11 +123,9 @@ function Game() {
         ) : (
                 <FlippingCardsList flashcards={flashcards} />)}
 
-            <div className="gamecontainer">
-                <FlippingCardsList flashcards={flashcards} />
-
-            </div>
-        </>
+         
+       </div>
+       </>
     );
 }
 
