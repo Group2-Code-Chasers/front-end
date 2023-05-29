@@ -336,6 +336,7 @@ body {
       transform: rotate(-1turn);
     }
   }
+  body{
   margin: 0;
   font-family: 'Josefin Sans', sans-serif;
   background: url("https://s3.amazonaws.com/ritalbradley-dev-photos/twinkle-back.gif");
