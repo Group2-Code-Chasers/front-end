@@ -31,6 +31,8 @@ useEffect(() => {
   return (
 
     <>
+    <div className='quizResultBody'>
+      <div className='aboveRecontainer'>
    <div className="Recontainer fade-in">
  
          
@@ -56,6 +58,8 @@ useEffect(() => {
             >
               Play Again
             </button>
+</div>
+</div>
 </div>
     </>
 
