@@ -182,4 +182,34 @@
     transition-delay: 0.4s;
     color: aliceblue;
   }
+  .loading-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 200px; /* Adjust the height based on your design */
+  }
   
+  .loading-message {
+    font-size: 24px;
+    /* Add your desired animation styles, e.g., using keyframes */
+    animation: loadingAnimation 1s infinite;
+  }
+  
+  @keyframes loadingAnimation {
+    0% { opacity: 0.5; }
+    50% { opacity: 1; }
+    100% { opacity: 0.5; }
+  }
+  .loading-message{
+    font-size: 30px;
+    color:#ffc506;
+    margin-top:150px;
+  }
+  .loading-container{
+    justify-content: space-around;
+  }
+  .ring{
+    margin-bottom:80px;
+    margin-top: 100px;
+  }

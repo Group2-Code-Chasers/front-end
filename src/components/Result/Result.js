@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-
+import './Result.css'
 
 
 const Result = (props) => {
@@ -31,7 +31,7 @@ useEffect(() => {
   return (
 
     <>
-  
+   <div className="Recontainer">
  
           <div className="">
             <h2>{quizResult.name}</h2>
@@ -55,7 +55,7 @@ useEffect(() => {
             >
               Play Again
             </button>
-
+</div>
     </>
 
   );
