@@ -11,9 +11,15 @@
  text-transform: uppercase;
  font-weight: bold;
  font-size: 12px;
+
 bottom: 0;
 top:100vh;
 align-items: flex-end;
+
+ font-family: 'Josefin Sans',sans-serif;
+ 
+
+
 
 }
 .div{

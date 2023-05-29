@@ -1,2 +1,67 @@
-/* about*/
-/*///////////////////////*/
+.style {
+    background-color: #3a59c8;
+    padding: 20px;
+    color: #ffffff;
+    padding-top: 40px;
+    text-align: center;
+  }
+  
+  .hero-image {
+    height: 300px;
+    background-image: url('https://as2.ftcdn.net/v2/jpg/04/39/13/37/1000_F_439133763_FrLdhZsd5aGC23r9ATARuKJBr8ifZjIe.jpg'); 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-bottom: 40px;
+  }
+
+  
+  h1 {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 30px;
+  }
+  
+  p.lead {
+    font-size: 18px;
+    margin-bottom: 40px;
+  }
+  
+  .card {
+    margin-bottom: 80px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 18px rgba(73, 7, 255, 0.2);
+  }
+  .card-img-top {
+    height: 200px;
+    object-fit: cover;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+  
+  .card-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .card-text {
+    font-size: 16px;
+    color: #010101;
+  }
+  
+  .row {
+    justify-content: center;
+  }
+  
+  .footer {
+    margin-top: 50px;
+  }
+  
+  

@@ -40,7 +40,7 @@ function CategoryModal(props) {
               onChange={e => setName(e.target.value)}
               required
               className=" input input-alt"
-            />
+            /><span class="input-border input-border-alt"></span>
           </Form.Group>
           <span class="input-border input-border-alt"></span>
           <Form.Group className="mb-3" controlId="formNumQuestions">
@@ -54,7 +54,7 @@ function CategoryModal(props) {
               onChange={e => setNumQuestions(e.target.value)}
               required
               className=" input input-alt"
-            />
+            /><span class="input-border input-border-alt"></span>
           </Form.Group>
           <span class="input-border input-border-alt"></span>
           <Form.Group className="mb-3 ss" controlId="formDifficulty">
