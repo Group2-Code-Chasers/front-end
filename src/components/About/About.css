@@ -64,6 +64,12 @@
   margin: 0 auto;
   
 }
+.section-contents {
+  max-width: 400px;
+  margin: 0 auto;
+  
+}
+
 
 .who-text{
   font-size: 20px;
@@ -77,11 +83,11 @@
 
 .team-members {
   display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
   margin-top: 30px;
+  flex-wrap: wrap;
+  width: 100%;
 }
-
+/* 
 .team-member {
   position: relative;
   width: 280px;
@@ -91,21 +97,33 @@
   background-size: cover;
   background-position: center;
   border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
-}
+  animation: fadeIn 0.5s ease-in-out;
+  animation-fill-mode: both;
+  animation-delay: 0.1s;
+  background-color: #13a4d4;
+  border: 1px solid #060404;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(26, 2, 207, 0.434);
+  transition: transform 0.9s ease-in-out, box-shadow 0.9s ease-in-out;
+  flex: 0 0 calc(20% - 40px);
+  background: #ffffff;
+} */
 
 .team-member:hover {
   transform: translateY(-5px);
+  box-shadow: 0 10px 18px rgba(76, 11, 255, 0.2);
+
 }
 
 .team-member img {
-  width: 150px;
-  height: 150px;
   border-radius: 50%;
   object-fit: cover;
   margin: 0 auto;
   display: block;
+  width: 200px;
+  height: 200px;
+  margin-bottom: 10px;
+
 }
 .team-member .icon-img{
   height: 30px;
@@ -119,6 +137,8 @@
 
 .social-links {
   margin-top: 10px;
+  display: flex;
+  justify-content: center;
 }
 
 .social-links a {
@@ -127,10 +147,14 @@
   color: #000000;
   font-size: 24px;
   transition: color 0.3s ease;
+  margin: 0 10px;
+  font-size: 24px;
 }
 
 .social-links a:hover {
   color: var(--primary-color);
+  color: #7300ff;
+
 }
 
 /* Add animation keyframes */
@@ -147,11 +171,11 @@
 }
 
 /* Apply animation to team members */
-.team-member {
+/* .team-member {
   animation: fadeIn 0.5s ease-in-out;
   animation-fill-mode: both;
   animation-delay: 0.1s;
-}
+} */
 
 
 
@@ -169,8 +193,8 @@
   }
 }
 
-.team-member {
-  background-color: #A5D7E8;
+/* .team-member {
+  background-color: #13a4d4;
   border: 1px solid #060404;
   border-radius: 10px;
   padding: 20px;
@@ -178,72 +202,74 @@
   box-shadow: 0 2px 4px rgba(26, 2, 207, 0.434);
   transition: transform 0.9s ease-in-out, box-shadow 0.9s ease-in-out;
   margin-bottom: 20px;
-}
+} */
 
-.team-member:hover {
+/* .team-member:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 18px rgba(73, 7, 255, 0.2);
-}
+  box-shadow: 0 10px 18px rgba(76, 11, 255, 0.2);
+} */
 
-.team-member img {
+/* .team-member img {
   width: 200px;
   height: 200px;
   object-fit: cover;
   border-radius: 50%;
   margin-bottom: 10px;
-}
+} */
 
-.team-member h3 {
+/* .team-member h3 {
   font-size: 24px;
   margin-bottom: 10px;
-}
+} */
 
-.social-links {
+/* .social-links {
   display: flex;
   justify-content: center;
-}
+} */
 
-.social-links a {
+/* .social-links a {
   margin: 0 10px;
   font-size: 24px;
   color: #010101;
-}
+} */
 
-.social-links a:hover {
+/* .social-links a:hover {
   color: #7300ff;
+} */
+
+/* .mo{
+margin-left: 50px;
 }
 
+.rajeh{
+margin-right: 50px;
+}  */
 
 
-
-.section-content h2 {
+/* .section-content h2 {
   font-size: 24px;
-}
+} */
 /*  */
-.team-members {
+/* .team-members {
   display: flex;
   justify-content: space-between; /* Add space between the cards */
-  margin-top: 30px;
-}
+  /* margin-top: 30px;
+} */ 
 
-.team-member {
+/* .team-member {
   flex: 0 0 calc(20% - 40px); /* Adjust the width to fit five cards in a row */
-  margin: 20px;
+  /* margin: 20px;
   padding: 20px;
   background: #ffffff;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
-}
+} */ 
 
 /*  */
-.team-member:hover {
+/* .team-member:hover {
   transform: translateY(-5px);
-}
-
-
-
-
+} */
 
 
 
@@ -264,15 +290,16 @@
 
 /* Card */
 .team-member-card {
-  --font-color: #323232;
+  --font-color: #000000;
   --bg-color: #e0e0e0;
   width: 250px;
-  height: 350px;
+  height: 490px;
   border-radius: 20px;
   background: var(--bg-color);
-  box-shadow: -9px 9px 18px #5a5a5a,
-              9px -9px 18px #ffffff;
+  box-shadow: -9px 9px 18px #0702027b,
+              9px -9px 18px rgba(10, 1, 132, 0.64);
   display: flex;
+  margin: 20px 20%;
   flex-direction: column;
   transition: .4s;
   position: relative;
@@ -285,16 +312,14 @@
 
 .card__img {
   width: 100%;
-  height: 100%;
   object-fit: cover;
   border-radius: 20px 20px 0 0;
   background-color: blueviolet;
 }
-
-.card__img img{
-
+.img-pro{
+  height: 250px;
+  width: 250px;
 }
-
 .card__descr-wrapper {
   padding: 15px;
   display: grid;
@@ -310,6 +335,7 @@
 
 .card__descr {
   color: var(--font-color);
+  font-size: 14px;
 }
 
 .svg {
@@ -336,3 +362,4 @@
 .card__links .link:hover {
   text-decoration: underline;
 }
+
