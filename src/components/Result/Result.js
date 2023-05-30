@@ -9,7 +9,7 @@ const Result = (props) => {
   const [quizResult, setQuizResult] = useState({});
 
   const getQuizResult = () => {
-    const serverURL = `http://localhost:3003/getQuizResult`;
+    const serverURL = `${process.env.REACT_APP_serverURL}/getQuizResult`;
 
     axios
         .get(serverURL)
@@ -46,7 +46,7 @@ useEffect(() => {
             <p className={(quizResult.score >= 50) ? "py-2": "py-3"}>
               You got {quizResult.numcorrectanswers}/{quizResult.numquestions}
             </p>
-            <p>you have {quizResult.numunanswered} unanswered question</p>
+            <p className='youhave'>you have {quizResult.numunanswered} unanswered question</p>
           
             {(quizResult.score >= 50) ? <p className="py-2 font-medium">Congrats!!!</p>:
             <p className="py-3 font-medium">Try to raise your score</p>

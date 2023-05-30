@@ -1,7 +1,7 @@
-import "./Footer.css"
-import Container from 'react-bootstrap/Container';
-// import 'bootstrap/dist/css/bootstrap.css';
 import React from 'react';
+import "./Footer.css"
+
+
  
 
 import {

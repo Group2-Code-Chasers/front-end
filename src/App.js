@@ -8,6 +8,7 @@ import Quiz from './components/Quiz/Quiz';
 import Result from './components/Result/Result';
 import About from "./components/About/About";
 import Game from "./components/Game/Game";
+import 'typeface-josefin-sans';
 
 
 
