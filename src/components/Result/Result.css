@@ -1,20 +1,19 @@
+:root {
+  --primary-color: #0B2447;
+  --secondary-color: #19376D;
+  --third-color: #576CBC;
+  --fourth-color: #A5D7E8;
+}
+
 .quizResultBody{
   height: 100vh;
     font-family: 'Josefin Sans', sans-serif;
-    background: url("https://s3.amazonaws.com/ritalbradley-dev-photos/twinkle-back.gif");
+    background: rgb(24,53,106);
+    background: linear-gradient(90deg, rgba(24,53,106,1) 16%, rgba(43,58,116,1) 53%, rgba(81,99,166,1) 97%);
+ 
 }
 
 
-.quizResultBody:before {
-  width: 100%;
-  height: 100%;
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: -1;
-  background-image: linear-gradient(to left, rgba(11, 36, 71, 0.6),rgba(25, 55, 109, 0.6) );
-}
 
 .aboveRecontainer{
   width: 100%;
@@ -32,70 +31,69 @@
   height: 70vh;
   text-align: center;
   margin: 0px 20%;
-  background-color: rgb(214, 233, 240);
+  background-color: rgb(250, 248, 248);
   border-radius: 30px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   min-width: 100px;
-  border: 2px solid #ccc;
+  border: 2px solid rgb(250, 248, 248);
+  box-shadow: rgba(63, 63, 63, 0.8) 0px 4px 20px 0px,
+  rgba(59, 59, 59, 0.9) 0px 4px 30px 0px;
 }
 
 
 
-
-.Recontainer:hover {
-    border-color: rgb(165, 215, 232);
-    background-color:rgb(165, 215, 232);
-}
 
 .h2QuizResult {
-  font-size: 28px;
+  font-size: 35px;
   margin-bottom: 3vh;
-  font-family: "Arial", sans-serif;
-  color: #333;
+  font-weight: 700;
+  font-family: 'Josefin Sans', sans-serif;
+  color: var(--primary-color);
 }
 
 .h4QuizResult {
   font-size: 20px;
   margin-bottom: 10px;
-  font-family: "Arial", sans-serif;
+  font-weight: 600;
+  font-family: 'Josefin Sans', sans-serif;
+  color: var(--primary-color);
+}
+
+.youhave{
+  color: var(--primary-color);
+  font-weight: 600;
+  font-family: 16%;
 }
 
 .text-green-600 {
-  color: #00cc66; /* Green color */
+  color: var(--third-color); /* Green color */
 }
 
 .text-red-600 {
-  color: #F45050; /* Red color */
+  color: #d30c0c; /* Red color */
 }
 
-.py-2 {
-  padding-top: 10px;
-  padding-bottom: 10px;
-  font-family: "Arial", sans-serif;
-  color: #666;
-}
+
 
 .font-medium {
   font-weight: 600;
 }
 
-/* #playAgianButton {
-  background-color: #3C486B; 
-  color: #ffffff;
-} */
+
 
 .py-2 {
   padding-top: 10px;
   padding-bottom: 10px;
-  font-family: "Arial", sans-serif;
-  color:#00cc66;
+  font-family: 'Josefin Sans', sans-serif;
+  color:var(--third-color);
 }
 
 .py-3{
   padding-top: 10px;
   padding-bottom: 10px;
-  font-family: "Arial", sans-serif;
-  color:crimson;
+  font-family: 'Josefin Sans', sans-serif;
+  color: #d30c0c;
+  
 }
 
 .px-7 {
@@ -110,11 +108,6 @@
 .mt-2 {
   margin-top: 15px;
 }
-
-/* #playAgianButton:hover{
-  background-color:#F9D949;
-  color: #333;
-} */
 
 
 #playAgianButton {
@@ -131,7 +124,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  /* width: 200px; */
   font-family: 'Nunito';
   margin: 0 auto;
   font-size: larger;

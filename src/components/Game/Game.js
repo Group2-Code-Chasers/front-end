@@ -3,19 +3,18 @@ import FlippingCardsList from '../FlippingCardsList/FlippingCardsList';
 import './Game.css';
 import axios from 'axios';
 
-import { RingLoader } from 'react-spinners';
 function Game() {
     const [flashcards, setFlashcards] = useState([]);
     const [categories, setCategories] = useState([]);
     const [isLoadingflip, setIsLoadingflip] = useState(false);
+    const [theBtn ,setTheBtn]=useState(false)
     const categoryEl = useRef();
     const amountEl = useRef();
-    const [loadingMessageFlip, setLoadingMessageFlip] = useState('')
-    ////////////////////////////////
-
-    ///////////////////////////////
+  
+    
     useEffect(() => {
-        axios.get('http://localhost:3003/getAllCategories').then((res) => {
+        const serverURL = `${process.env.REACT_APP_serverURL}/getAllCategories`;
+        axios.get(serverURL).then((res) => {
             setCategories(res.data);
         });
     }, []);
@@ -31,11 +30,13 @@ function Game() {
         const amount = amountEl.current.value;
         const category = categoryEl.current.value;
         setIsLoadingflip(true); // Set loading state to true before making the API request
+        setTheBtn(true);
 
         // Delay for 2 seconds
         setTimeout(() => {
+            const serverURL = `${process.env.REACT_APP_serverURL}/flipping`;
             axios
-                .get('http://localhost:3003/flipping', {
+                .get(serverURL , {
                     params: {
                         amount,
                         category,
@@ -98,37 +99,45 @@ function Game() {
                     <button className="btnGenerat">Generate</button>
                 </div>
             </form>
-
+            {!theBtn && (
+                <div className='top'>
+                    <div className='text'>
+                        <h1 className="game-description">
+                            Let's Play A game And Have Some Fun Together,
+                            Just Choose A Category , Number Of Questions And Then Hit The Generate Button And Let The Joy Starts!
+                        </h1>
+                        
+                    </div></div>)}
             <div >
                 {isLoadingflip ? (
                     <div className='hmesterr'>
-                    <div className='all'>
-                        <div aria-label="Orange and tan hamster running in a metal wheel" role="img" class="wheel-and-hamster">
-                            <div class="wheel"></div>
-                            <div class="hamster">
-                                <div class="hamster__body">
-                                    <div class="hamster__head">
-                                        <div class="hamster__ear"></div>
-                                        <div class="hamster__eye"></div>
-                                        <div class="hamster__nose"></div>
+                        <div className='all'>
+                            <div aria-label="Orange and tan hamster running in a metal wheel" role="img" class="wheel-and-hamster">
+                                <div class="wheel"></div>
+                                <div class="hamster">
+                                    <div class="hamster__body">
+                                        <div class="hamster__head">
+                                            <div class="hamster__ear"></div>
+                                            <div class="hamster__eye"></div>
+                                            <div class="hamster__nose"></div>
+                                        </div>
+                                        <div class="hamster__limb hamster__limb--fr"></div>
+                                        <div class="hamster__limb hamster__limb--fl"></div>
+                                        <div class="hamster__limb hamster__limb--br"></div>
+                                        <div class="hamster__limb hamster__limb--bl"></div>
+                                        <div class="hamster__tail"></div>
                                     </div>
-                                    <div class="hamster__limb hamster__limb--fr"></div>
-                                    <div class="hamster__limb hamster__limb--fl"></div>
-                                    <div class="hamster__limb hamster__limb--br"></div>
-                                    <div class="hamster__limb hamster__limb--bl"></div>
-                                    <div class="hamster__tail"></div>
                                 </div>
+                                <div class="spoke"></div>
                             </div>
-                            <div class="spoke"></div>
-                        </div>
-                    </div></div>
+                        </div></div>
                 ) : (
                     <FlippingCardsList flashcards={flashcards} />)}
                 <div className="gamecontainer">
                 </div>
             </div>
-            </div>
-        
+        </div>
+
     );
 }
 
