@@ -1,93 +1,68 @@
-.cardflip{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    border-radius: .25rem;
-    box-shadow: 0 0 5px 2px rgba(0, 0, 0, .3);
-    background-color: #0846a3;
-    transform-style: preserve-3d;
-    transition: 150ms;
-    cursor: pointer;
-    transform: perspective(1000px) rotateY(var(--rotate-y, 0)) translateY(var(--translate-y, 0));
+:root {
+  --primary-color: #0b2447;
+  --secondary-color: rgb(25, 55, 109);
+  --third-color: #576CBC;
+  --fourth-color: #A5D7E8;
+}
 
-     /* Additional styles */
+.cardflip {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  border-radius: .25rem;
+  box-shadow: 0 0 5px 2px rgba(0, 0, 0, .3);
+  background-color: rgb(37 76 147);
+  transform-style: preserve-3d;
+  transition: 150ms;
+  cursor: pointer;
+  transform: perspective(1000px) rotateY(var(--rotate-y, 0)) translateY(var(--translate-y, 0));
+
+  /* Additional styles */
   perspective: 1000px;
   transition: 0.5s;
-  
+
 }
 
 .cardflip:hover {
-    --translate-y: -2px;
-    box-shadow: 0 0 5px 2px rgba(0, 0, 0, .5);
+  --translate-y: -2px;
+  box-shadow: 0 0 5px 2px rgba(0, 0, 0, .5);
 
-
-    /* Additional styles */
-  box-shadow: 0 0 10px 2px rgba(0, 0, 0, .5);
 }
 
 .cardflip.flip {
-    --rotate-y: 180deg;
-    /* Additional styles */
+  --rotate-y: 180deg;
   transform: perspective(1000px) rotateY(180deg) translateY(-10px);
 }
 
 .cardflip .front {
-    left: 0;
-
-      /* Additional styles */
-  background-color:  #f3efef;
+  left: 0;
+  background-color: #f3efef;
   color: #0846a3;
   font-size: 1.2rem;
   line-height: 1.4;
   text-align: center;
-  padding: 2rem;
+  box-shadow: 0 0 40px 2px rgba(43, 42, 42, 0.5);
+  /* padding: 2rem; */
+
 }
 
 .cardflip .front,
 .cardflip .back {
-    position: absolute;
-    padding: 1rem;
-    backface-visibility: hidden;
-    /* background-color: #0846a3;
-  color: #f3efef; */
-
-    /* Additional styles */
-  /* background-color: #f3efef;
-  color: #0846a3;
-  font-size: 1rem;
-  line-height: 1.4;
-  text-align: center;
-  padding: 2rem; */
+  position: absolute;
+  padding: 1rem;
+  backface-visibility: hidden;
 }
 
 .cardflip .back {
-    transform: rotateY(180deg);
-    /* Additional styles */
-  margin-top: 1.5rem;
- color: #f3efef;
+  transform: rotateY(180deg);
+  padding-inline: 6rem;
+  background-color: rgb(37 76 147);
+  color: #f3efef;
 }
 
 .flashcard-options {
-    margin-top: .5rem;
-    /* color: #f3efef; */
-
-    /* Additional styles */
-   margin-top: 1rem;
-  font-size: 1rem; 
-}
-
-
-/* .flashcard-option {
-    margin-top: .25rem;
-    color: #f3efef;
-    font-size: .75rem;
-} */
-
-.flashcard-option:first-child {
-    margin-top: 0;
-
-     /* Additional styles */
-  margin-top: 0;
-    
+  margin-top: .5rem;
+  margin-top: 1rem;
+  font-size: 1rem;
 }

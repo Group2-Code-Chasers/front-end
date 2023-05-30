@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Container, Row, Col } from 'react-bootstrap';
 import CategoryModal from '../Modal/CategoryModal';
 import ArrowDownIcon from './ArrowDownIcon';
-import photohome from'./Levels 3.png';
+import photohome from './Levels 3.png';
 
 import Quiz from '../Quiz/Quiz';
 
@@ -19,7 +19,7 @@ function Home(props) {
     const [numQuestions, setNumQuestions] = useState(5);
     const [difficulty, setDifficulty] = useState('easy');
     const [showModal, setShowModal] = useState(false);
-  
+
 
 
 
@@ -64,34 +64,41 @@ function Home(props) {
     return (
         <>
 
-            <Container fluid className="hero">
-                <Container>
-                    <h1 className="hero-title">Welcome to <span className='quizzer'><strong>Quizzer!</strong></span></h1>
-                    <h2 className="hero-subtitle">where knowledge meets excitement!</h2>
-                    <p className="hero-description">
-                        Challenge yourself with our engaging quizzes and put your skills to the test.
-                    </p>
-                </Container>
-                <Container>
-                    <img src={photohome} alt="photohome" className='photohome' />
-                </Container>
-                <ArrowDownIcon />
-            </Container>
+            <div className="hero">
+                <div className='sub-hero'>
+                    <div className='herotextdiv'>
+                        <h1 className="hero-title">Welcome to <span className='quizzer'><strong>Quizzer!</strong></span></h1>
+                        <h2 className="hero-subtitle">where knowledge meets excitement!</h2>
+                        <p className="hero-description">
+                            Challenge yourself with our engaging quizzes and put your skills to the test.
+                        </p>
+                    </div >
 
-            <div className="mainContainer">
-                <Container className="Container">
-                    <Row xs={1} sm={2} md={3} lg={4} xl={5} className="g-4">
+                    <div className='herophotodiv'>
+                        <img src={photohome} alt="photohome" className='photohome' />
+                    </div>
+
+                </div>
+
+                <div className='divArrowDownIcon' >
+                    <ArrowDownIcon />
+                </div>
+            </div>
+
+            <div className="mainContainerCategory">
+                <div className="containerCategory">
+                    <div className="gridContainer">
                         {categoryData.map(item => (
-                            <Col key={item.id}>
+                            <div key={item.id}>
                                 <div className="cardBox">
                                     <div className="card" onClick={() => handleCardClick(item.id)}>
                                         <span className="text">{item.name}</span>
                                     </div>
                                 </div>
-                            </Col>
+                            </div>
                         ))}
-                    </Row>
-                </Container>
+                    </div>
+                </div>
             </div>
 
             <CategoryModal
