@@ -4,95 +4,107 @@
   --third-color: #576CBC;
   --fourth-color: #A5D7E8;
 }
+
 .footer {
   background: var(--primary-color);
   left: 0;
   bottom: 0;
   width: 100%;
- z-index: 300;
- text-align: center;
- color: white;
- letter-spacing: 4px;
- text-transform: uppercase;
- font-weight: bold;
- font-size: 12px;
-
-bottom: 0;
-top:100vh;
-align-items: flex-end;
-
- font-family: 'Josefin Sans',sans-serif;
- 
-
-
-
-}
-.div{
+  z-index: 300;
   text-align: center;
- padding-top: 20px;
+  color: white;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 12px;
+
+  bottom: 0;
+  top: 100vh;
+  align-items: flex-end;
+
+  font-family: 'Josefin Sans', sans-serif;
+
+
+
+
 }
+
+.div {
+  text-align: center;
+  padding-top: 20px;
+}
+
 .div a {
   color: white;
   text-decoration: none;
 }
 
 .icons {
- 
-  justify-content:center;
+
+  justify-content: center;
 
 
 }
 
-.icon{
-margin: 10px;
+.icon {
+  margin: 10px;
   width: 25px;
   height: 25px;
   border-radius: 70%;
   outline: 2px solid #ffffff;
- transition-property: outline-offset , outline-color ,background-color ;
- transition-duration:0.25s ;
+  transition-property: outline-offset, outline-color, background-color;
+  transition-duration: 0.25s;
 
 
 }
-.icon:hover{
-outline-offset: 4px;
+
+.icon:hover {
+  outline-offset: 4px;
 }
-.icons a{
+
+.icons a {
   margin: auto;
 }
-.icons :hover a{
-  animation: shake 0.25s;
-} @keyframes shake{
-  10%{
- transform:rotate(15deg) 
-    
-  }
-  20%{
-      transform:rotate(-15deg) 
-    
-  }
-  30%{
-      transform:rotate(15deg) 
-    
-  }
-  40%{
-      transform:rotate(-15deg) 
-    
-  }
-}
-.website{
-  text-decoration: none;
-  color:#F4FF59 ;
-}
-.website:hover{
-  color: #ffffff;
-}@media (max-width: 600px) {
-  .icon {
- 
- 
-    display: block;}
-    .icons{
-      justify-content: center;
-      padding-left: 50%;
 
-    }}
+.icons :hover a {
+  animation: shake 0.25s;
+}
+
+@keyframes shake {
+  10% {
+    transform: rotate(15deg)
+  }
+
+  20% {
+    transform: rotate(-15deg)
+  }
+
+  30% {
+    transform: rotate(15deg)
+  }
+
+  40% {
+    transform: rotate(-15deg)
+  }
+}
+
+.website {
+  text-decoration: none;
+  color: #ffde59;
+}
+
+.website:hover {
+  color: #ffffff;
+}
+
+@media (max-width: 600px) {
+  .icon {
+    display: block;
+  }
+
+  .icons {
+    justify-content: center;
+   padding-left: 43%;
+
+  }
+}

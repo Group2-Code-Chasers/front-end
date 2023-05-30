@@ -73,14 +73,11 @@ function CategoryModal(props) {
           </Form.Group>
           <div className="crazy-button-container">
             <Button variant="primary" type="submit" className='crazy-button'>
-            Let's go
+            Let's start
             </Button>
             <Button variant="secondary" onClick={handleClose} className='crazy-button'>
-            <span class="text">Close</span>
-              <span class="blob"></span>
-              <span class="blob"></span>
-              <span class="blob"></span>
-              <span class="blob"></span>
+            Close
+            
             </Button>
           </div>
         </Form>

@@ -1,8 +1,18 @@
+:root {
+  --primary-color: #0b2447;
+  --secondary-color: rgb(25, 55, 109);
+  --third-color: #576CBC;
+  --fourth-color: #A5D7E8;
+}
 .card-grid {
     display: grid;
     align-items: center;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 1rem;
-    margin: 5% 5%;
+    gap: 2rem;
+    padding-top: 8%;
+    padding-bottom: 5%;
+    padding-left: 4%;
+    padding-right: 4%;
+    width: 100%;
    
   }
