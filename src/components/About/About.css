@@ -6,7 +6,6 @@
 }
 
 .about-us-container {
-  /* padding: 20px; */
   font-family: 'Josefin Sans',sans-serif;
   
 }
@@ -16,8 +15,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 500px;
-  background-color:#576CBC ;
+  height: 100vh;
+  background: rgb(24,53,106);
+  background: linear-gradient(90deg, rgba(24,53,106,1) 16%, rgba(43,58,116,1) 53%, rgba(81,99,166,1) 97%);
   overflow: hidden;
 }
 
@@ -25,15 +25,18 @@
   z-index: 1;
   text-align: center;
   color: #ffffff;
+  font-family: 'Josefin Sans',sans-serif;
 }
 
 
 .hero-content h1 {
-  font-size: 36px;
+  font-size: 60px;
+  font-family: 'Josefin Sans',sans-serif;
+  font-weight: 700;
 }
 
 .hero-content p {
-  font-size: 18px;
+  font-size: 30px;
   margin-top: 10px;
 }
 
@@ -45,56 +48,60 @@
   background-attachment: fixed;
   text-align: center;
 }
+.who-we-are-section{
+  padding-top:10%;
+}
 
-.section-content {
-  max-width: 800px;
-  margin: 0 auto;
-  
-}
-.section-contents {
-  max-width: 400px;
-  margin: 0 auto;
-  
-}
+
 
 
 .who-text{
   font-size: 20px;
   color: #ffffff;
+  padding-inline:10%;
+  padding-top:1.5%;
+  text-align: justify;
 }
 
 .section-content h2 {
   font-size: 40px;
-  color:#000000
+  color:#A5D7E8;
 }
 
-.team-members {
+.team-members{
+  margin: 0;
   display: flex;
   flex-wrap: wrap;
-  margin: 30px;
+  padding-inline: 5%;
 }
-/* 
-.team-member {
-  position: relative;
-  width: 280px;
-  /* margin: 20px; */
-  /* padding: 20px; */
-  background-image: url('https://cdn.wallpapersafari.com/61/27/1CDvG0.jpg');
-  background-size: cover;
-  background-position: center;
-  border-radius: 10px;
-  animation: fadeIn 0.5s ease-in-out;
-  animation-fill-mode: both;
-  animation-delay: 0.1s;
-  background-color: #13a4d4;
-  border: 1px solid #060404;
-  text-align: center;
-  box-shadow: 0 2px 4px rgba(26, 2, 207, 0.434);
-  transition: transform 0.9s ease-in-out, box-shadow 0.9s ease-in-out;
-  flex: 0 0 calc(20% - 40px);
-  background: #ffffff;
-} */
 
+ @media screen and (min-width: 420px) and (max-width: 644px)  {
+  .team-members{
+    padding-left: 20%;
+  }
+  
+}
+
+@media screen and (min-width: 370px) and (max-width: 420px)  {
+  .team-members{
+    padding-left: 15%;
+  }
+  
+}
+
+@media screen and (min-width: 350px) and (max-width: 370px)  {
+  .team-members{
+    padding-left: 10%;
+  }
+  
+}
+
+@media (max-width: 280px) {
+  .team-members{
+    padding-left:0;
+  }
+  
+}
 .team-member:hover {
   transform: translateY(-5px);
   box-shadow: 0 10px 18px rgba(76, 11, 255, 0.2);
@@ -119,6 +126,7 @@
 .team-member h3 {
   margin-top: 10px;
   font-size: 18px;
+  color:#A5D7E8;
 }
 
 .social-links {
@@ -137,12 +145,6 @@
   font-size: 24px;
 }
 
-.social-links a:hover {
-  color: var(--primary-color);
-  color: #7300ff;
-
-}
-
 /* Add animation keyframes */
 @keyframes fadeIn {
   from {
@@ -156,112 +158,15 @@
   }
 }
 
-/* Apply animation to team members */
-/* .team-member {
-  animation: fadeIn 0.5s ease-in-out;
-  animation-fill-mode: both;
-  animation-delay: 0.1s;
-} */
 
 
-
-.rotate {
-  animation: rotate 40s infinite linear;
+.text-main{
+  font-size: 40px;
+  color:#A5D7E8;
+  font-family: 'Josefin Sans', sans-serif;
 }
 
-@keyframes rotate {
-  0% {
-    transform: rotate(0deg);
-  }
 
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-/* .team-member {
-  background-color: #13a4d4;
-  border: 1px solid #060404;
-  border-radius: 10px;
-  padding: 20px;
-  text-align: center;
-  box-shadow: 0 2px 4px rgba(26, 2, 207, 0.434);
-  transition: transform 0.9s ease-in-out, box-shadow 0.9s ease-in-out;
-  margin-bottom: 20px;
-} */
-
-/* .team-member:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 18px rgba(76, 11, 255, 0.2);
-} */
-
-/* .team-member img {
-  width: 200px;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 50%;
-  margin-bottom: 10px;
-} */
-
-/* .team-member h3 {
-  font-size: 24px;
-  margin-bottom: 10px;
-} */
-
-/* .social-links {
-  display: flex;
-  justify-content: center;
-} */
-
-/* .social-links a {
-  margin: 0 10px;
-  font-size: 24px;
-  color: #010101;
-} */
-
-/* .social-links a:hover {
-  color: #7300ff;
-} */
-
-/* .mo{
-margin-left: 50px;
-}
-
-.rajeh{
-margin-right: 50px;
-}  */
-
-
-/* .section-content h2 {
-  font-size: 24px;
-} */
-/*  */
-/* .team-members {
-  display: flex;
-  justify-content: space-between; /* Add space between the cards */
-  /* margin-top: 30px;
-} */ 
-
-/* .team-member {
-  flex: 0 0 calc(20% - 40px); /* Adjust the width to fit five cards in a row */
-  /* margin: 20px;
-  padding: 20px;
-  background: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
-} */ 
-
-/*  */
-/* .team-member:hover {
-transform: translateY(-5px);} */
-
-
-.team-section {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
 
 .team-member-card {
   width: 100%;
@@ -286,37 +191,17 @@ transform: translateY(-5px);} */
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* Card */
 .team-member-card {
   --font-color: #000000;
   --bg-color: #e0e0e0;
   width: 250px;
-  height: 490px;
   border-radius: 20px;
   background: var(--bg-color);
   box-shadow: -9px 9px 18px #0702027b,
-              9px -9px 18px rgba(10, 1, 132, 0.64);
+              9px -9px 18px rgb(38 38 40 / 64%);
   display: flex;
-  margin: 20px 20%;
+  /* margin: 20px 20%; */
   flex-direction: column;
   transition: .4s;
   position: relative;
@@ -327,16 +212,11 @@ transform: translateY(-5px);} */
   box-shadow: 0px 0px 10px 2px #5a5a5a;
 }
 
-.card__img {
-  width: 100%;
-  object-fit: cover;
-  border-radius: 20px 20px 0 0;
-  background-color: blueviolet;
-}
 
 .img-pro{
-  height: 250px;
-  width: 250px;
+  width: 208px;
+  margin-bottom:3px;
+  border-radius: 30px;
 }
 
 .card__descr-wrapper {
@@ -345,7 +225,6 @@ transform: translateY(-5px);} */
 }
 
 .card__title {
-  color: var(--font-color);
   text-align: center;
   margin-bottom: 15px;
   font-weight: 900;
@@ -353,15 +232,15 @@ transform: translateY(-5px);} */
 }
 
 .card__descr {
-  color: var(--font-color);
   font-size: 14px;
+  text-align: justify;
 }
 
 .svg {
   width: 25px;
   height: 25px;
   transform: translateY(25%);
-  fill: var(--font-color);
+ 
 }
 
 .card__links {
@@ -372,7 +251,6 @@ transform: translateY(-5px);} */
 }
 
 .card__links .link {
-  color: var(--font-color);
   font-weight: 600;
   font-size: 15px;
   text-decoration: none;

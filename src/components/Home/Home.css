@@ -4,9 +4,9 @@
     --third-color: #576CBC;
     --fourth-color: #A5D7E8;
   }
+
 /*cards styling*/
 .cardBox {
-    /* width: 150px; */
     height: 180px; 
     position: relative;
     display: grid;
