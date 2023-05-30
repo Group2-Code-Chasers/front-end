@@ -23,7 +23,7 @@ function Footer(){
  
       
         <div className='footer'>
-    <MDBFooter className='text-center' color='white' bgColor='#021430'>
+    <MDBFooter className='text-center' color='white' >
       <MDBContainer className='p-4'>
      
 
@@ -49,7 +49,7 @@ function Footer(){
           </form>
         </section>  </MDBContainer>
  
-      <div className='text-center p-3' style={{ backgroundColor: 'rgba(0, 0, 0, 0.2)' }}>
+      <div className='text-center p-3 downfooter'>
       © Copyright  2023
         <a className='website' href='https://mdbootstrap.com/'>
         Quizzers.com

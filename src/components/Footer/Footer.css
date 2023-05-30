@@ -6,7 +6,7 @@
 }
 
 .footer {
-  background: var(--primary-color);
+  background:#041936;
   left: 0;
   bottom: 0;
   width: 100%;
@@ -17,16 +17,15 @@
   text-transform: uppercase;
   font-weight: bold;
   font-size: 12px;
-
   bottom: 0;
   top: 100vh;
   align-items: flex-end;
-
   font-family: 'Josefin Sans', sans-serif;
 
+}
 
-
-
+.downfooter{
+  background: #01112B;
 }
 
 .div {
