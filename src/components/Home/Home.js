@@ -1,12 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Container, Row, Col } from 'react-bootstrap';
 import CategoryModal from '../Modal/CategoryModal';
 import ArrowDownIcon from './ArrowDownIcon';
 import photohome from './Levels 3.png';
-
-import Quiz from '../Quiz/Quiz';
-
 import 'typeface-josefin-sans';
 
 import 'bootstrap/dist/css/bootstrap.css';
@@ -28,10 +24,10 @@ function Home(props) {
         props.onStartQuiz(categoryId, numQuestions, difficulty, name);
     };
 
-
+//const serverURL = `${process.env.REACT_APP_serverURL}/getAllCategories`;
 
     const getallCategory = () => {
-        const serverURL = `http://localhost:3003/getAllCategories`;
+        const serverURL = `${process.env.REACT_APP_serverURL}/getAllCategories`;
 
         axios
             .get(serverURL)

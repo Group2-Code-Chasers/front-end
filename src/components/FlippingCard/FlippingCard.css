@@ -21,6 +21,9 @@
   /* Additional styles */
   perspective: 1000px;
   transition: 0.5s;
+  min-height: 300px;
+  padding: 10px 0;
+
 
 }
 
@@ -36,6 +39,8 @@
 }
 
 .cardflip .front {
+  display: flex;
+  flex-direction: column;
   left: 0;
   background-color: #f3efef;
   color: #0846a3;
@@ -44,6 +49,12 @@
   text-align: center;
   box-shadow: 0 0 40px 2px rgba(43, 42, 42, 0.5);
   /* padding: 2rem; */
+  min-height: 300px;
+  padding: 10px 0;
+  justify-content: center;
+  align-items: center;
+
+
 
 }
 
@@ -59,6 +70,7 @@
   padding-inline: 6rem;
   background-color: rgb(37 76 147);
   color: #f3efef;
+  width:100%
 }
 
 .flashcard-options {

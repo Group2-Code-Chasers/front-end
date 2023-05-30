@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './Quiz.css';
 import { css } from '@emotion/react';
-import { RingLoader } from 'react-spinners';
 
 const Quiz = (props) => {
   const [questions, setQuestions] = useState([]);
@@ -19,10 +18,11 @@ const Quiz = (props) => {
 
  
   // Fetch questions from the Open Trivia API based on category, numQuestions, and difficulty
+  //
 
   useEffect(() => {
     const fetchQuestions = async () => {
-      const serverURL = `http://localhost:3003/choosequiz?categoryId=${props.category}&amount=${props.numQuestions}&difficulty=${props.difficulty}&type=multiple`;
+      const serverURL = `${process.env.REACT_APP_serverURL}/choosequiz?categoryId=${props.category}&amount=${props.numQuestions}&difficulty=${props.difficulty}&type=multiple`;
 
       try {
         const response = await axios.get(serverURL);
@@ -123,7 +123,7 @@ const Quiz = (props) => {
 
   const handleQuizSubmission = async () => {
     try {
-      const serverURL = 'http://localhost:3003/savequiz';
+      const serverURL = `${process.env.REACT_APP_serverURL}/savequiz`;
       const quizData = {
         name: props.name,
         numQuestions: questions.length,
@@ -143,9 +143,6 @@ const Quiz = (props) => {
   // Render question and options
   const renderQuestion = () => { 
     if (isLoading) {//to render the loader 
-
-
-      
       const override = css`
       display: block;
       margin: 0 auto;
@@ -212,7 +209,6 @@ const Quiz = (props) => {
                 color: selectedOption === option ? '#fff' : '#fff',
               }}
 
-            // style={{ backgroundColor: selectedOption === option ? 'lightblue' : 'white' }}
             >
               {option}
             </li>
@@ -232,19 +228,6 @@ const Quiz = (props) => {
       </div>
     );
   };
-
-  // Utility function to shuffle an array
-  // const shuffle = (array) => {
-  //   const shuffledArray = [...array];
-
-  //   for (let i = shuffledArray.length - 1; i > 0; i--) {
-  //     const j = Math.floor(Math.random() * (i + 1));
-  //     [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
-  //   }
-
-  //   return shuffledArray;
-  // };
-
 
 
   // Calculate the score as a percentage
