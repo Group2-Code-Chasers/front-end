@@ -182,7 +182,7 @@ const Quiz = (props) => {
         <polyline class="loader_front" points="32.5 2,38.5 19" stroke-dasharray="19 19"></polyline>
       </g>
     </svg>
-    <p className='theWords'>On Our Way Your Quiz...</p>
+    <p className='theWords'>On Our Way To Your Quiz...</p>
     
     </div>
     );
@@ -197,7 +197,7 @@ const Quiz = (props) => {
     return (
 
       <div>
-        <h3 id="heading">Question {currentQuestionIndex + 1}</h3>
+        <h3 id="headingquestion">Question {currentQuestionIndex + 1}</h3>
         <p className="question-text">{currentQuestion.question}</p>
 
         <ul className='list'>
@@ -257,10 +257,7 @@ const Quiz = (props) => {
 
   return (
     <div className="quiz-container">
-      {/* <h2 className="quiz-title" id="heading">
-        Quiz
-      </h2> */}
-      {/* <p id="heading">Timer: {timer}</p> */}
+
       {quizCompleted ? (
         <div className="completion-container">
           <p className="score">Score: {calculateScorePercentage()}%</p>
@@ -269,8 +266,8 @@ const Quiz = (props) => {
         </div>
       ) : (
         <div className='score-timer-container' >
-        <p id="heading2">Timer: {timer}</p>
-        <p className="score" id="heading2">
+        <p className="quizheading2">Timer: {timer}</p>
+        <p className="score quizheading2">
           Score: {score}
         </p>
         </div>
