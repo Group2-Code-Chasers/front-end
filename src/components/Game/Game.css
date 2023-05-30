@@ -5,7 +5,6 @@
   --fourth-color: #A5D7E8;
 }
 
-
 .containergame {
   margin: 0;
   font-family: 'Josefin Sans', sans-serif;
@@ -15,7 +14,7 @@
   width: 100%;
 }
 
-
+  
 .headerformflipping {
   display: flex;
   justify-content: flex-end;
